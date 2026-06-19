@@ -191,7 +191,7 @@ export default function Home() {
                   Contact Me
                 </a>
                 <a
-                  href="/Jeremiah-James-Curias-CV.pdf"
+                  href="/CV_Curias.pdf"
                   download
                   className="inline-flex items-center justify-center rounded-full border border-violet-400/30 bg-violet-500/10 px-5 py-2.5 text-xs font-semibold text-violet-100 transition hover:-translate-y-0.5 hover:border-violet-300/50 hover:bg-violet-500/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-300/60 sm:px-6 sm:py-3 sm:text-sm"
                 >
@@ -431,9 +431,6 @@ export default function Home() {
             </a>
             <a className={pillLinkClass} href="https://www.linkedin.com/in/curias-jeremiah-james-a-b71076320/">
               LinkedIn
-            </a>
-            <a className={pillLinkClass} href="mailto:jeremiahcurias@gmail.com">
-              Email
             </a>
           </div>
         </div>
