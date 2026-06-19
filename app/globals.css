@@ -1,26 +1,133 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background-rgb: 3 7 18;
+  --foreground-rgb: 226 232 240;
+  --muted-rgb: 148 163 184;
+  --panel-rgb: 15 23 42;
+  --panel-strong-rgb: 17 24 39;
+  --border-rgb: 51 65 85;
+  --accent-rgb: 34 211 238;
+  --accent-2-rgb: 99 102 241;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: rgb(var(--background-rgb));
+  --color-foreground: rgb(var(--foreground-rgb));
+  --color-muted: rgb(var(--muted-rgb));
+  --color-panel: rgb(var(--panel-rgb));
+  --color-panel-strong: rgb(var(--panel-strong-rgb));
+  --color-border: rgb(var(--border-rgb));
+  --color-accent: rgb(var(--accent-rgb));
+  --color-accent-2: rgb(var(--accent-2-rgb));
+  --font-sans: var(--font-space-grotesk);
+  --font-mono: var(--font-ibm-plex-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(34, 211, 238, 0.14), transparent 26%),
+    radial-gradient(circle at 82% 16%, rgba(99, 102, 241, 0.14), transparent 28%),
+    radial-gradient(circle at 50% 78%, rgba(16, 185, 129, 0.08), transparent 30%),
+    linear-gradient(180deg, rgb(3 7 18) 0%, rgb(5 11 24) 100%);
+  color: rgb(var(--foreground-rgb));
+  font-family: var(--font-space-grotesk), sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(34, 211, 238, 0.25);
+  color: white;
+}
+
+.portfolio-grid {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.glass-panel {
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.82), rgba(15, 23, 42, 0.68));
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  box-shadow: 0 24px 80px rgba(2, 6, 23, 0.45);
+  backdrop-filter: blur(18px);
+}
+
+button,
+a,
+input,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.fade-up {
+  animation: fade-up 0.8s ease both;
+}
+
+.fade-up-delay-1 {
+  animation: fade-up 0.8s ease both 0.12s;
+}
+
+.fade-up-delay-2 {
+  animation: fade-up 0.8s ease both 0.24s;
+}
+
+.fade-up-delay-3 {
+  animation: fade-up 0.8s ease both 0.36s;
+}
+
+.float-slow {
+  animation: float-slow 10s ease-in-out infinite;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -14px, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .fade-up,
+  .fade-up-delay-1,
+  .fade-up-delay-2,
+  .fade-up-delay-3,
+  .float-slow {
+    animation: none !important;
+  }
 }
