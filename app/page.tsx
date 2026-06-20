@@ -80,7 +80,7 @@ const featuredProjects = [
     title: "Pawnshop Management System",
     description:
       "Operational web platform for customer records, pawn transactions, payments, renewals, redemptions, and branch monitoring.",
-    tech: ["Next.js", "TypeScript", "API", "Database", "Backend"],
+    tech: ["NestJS", "TypeScript", "Prisma", "PostgreSQL", "Supabase", "JWT", "Redis", "Jest", "Next.js", "React", "Tailwind CSS"],
     highlights: [
       "Branch operations workflow",
       "Customer and transaction tracking",
@@ -90,6 +90,21 @@ const featuredProjects = [
     previewSrc: "/pms.png",
     previewPath: "/pms.png",
     previewAlt: "Pawnshop Management System website preview",
+  },
+  {
+    title: "Inspire Cinema Ticket System",
+    description:
+      "A cinema booking web app with public movie and ticket flows, plus an admin dashboard for managing cinema operations.",
+    tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "JavaScript", "Prisma ORM", "PostgreSQL"],
+    highlights: [
+      "Public browsing and ticket booking flows",
+      "Admin dashboard for cinema operations",
+      "Database-backed feature set with Prisma and PostgreSQL",
+    ],
+    accent: "linear-gradient(90deg, rgba(245,158,11,0.95), rgba(34,211,238,0.95), rgba(59,130,246,0.95))",
+    previewSrc: "/images/cinema.png",
+    previewPath: "/images/cinema.png",
+    previewAlt: "Inspire Cinema Ticket System website preview",
   },
   {
     title: "Developer Portfolio Website",
@@ -102,8 +117,8 @@ const featuredProjects = [
       "Production build workflow",
     ],
     accent: "linear-gradient(90deg, rgba(99,102,241,0.95), rgba(34,211,238,0.95), rgba(16,185,129,0.95))",
-    previewSrc: "/projects/portfolio-website.png",
-    previewPath: "/projects/portfolio-website.png",
+    previewSrc: "/images/dev.png",
+    previewPath: "/images/dev.png",
     previewAlt: "Developer portfolio website preview",
   },
 ];
@@ -163,7 +178,7 @@ export default function Home() {
               </div>
 
               <div className="mt-4 flex items-center gap-4 sm:gap-5 md:gap-7 lg:gap-8">
-                <ProfileImageModal src="/IMG_0332.JPG" alt="Portrait of Jeremiah James A. Curias" />
+                <ProfileImageModal src="/images/IMG_0332.JPG" alt="Portrait of Jeremiah James A. Curias" />
                 <div className="min-w-0">
                   <h1 className="max-w-4xl text-[1.75rem] font-semibold leading-tight tracking-tight text-white text-balance min-[390px]:text-4xl md:text-5xl lg:text-[3.35rem] xl:text-6xl">
                     Jeremiah James A. Curias
