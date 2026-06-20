@@ -2,6 +2,8 @@ import nodemailer from "nodemailer";
 
 export const runtime = "nodejs";
 
+const fallbackContactEmail = "jeremiahcurias@gmail.com";
+
 type ContactPayload = {
   name?: unknown;
   email?: unknown;
@@ -49,7 +51,13 @@ export async function POST(request: Request) {
   const contactTo = process.env.CONTACT_TO || smtpUser;
 
   if (!smtpUser || !smtpPass || !contactTo) {
-    return Response.json({ error: "Email service is not configured yet." }, { status: 500 });
+    return Response.json(
+      {
+        error: "Email service is not configured on this deployment.",
+        fallbackMailto: fallbackContactEmail,
+      },
+      { status: 503 }
+    );
   }
 
   const transporter = nodemailer.createTransport({

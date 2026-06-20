@@ -8,7 +8,7 @@ type FormState = {
   message: string;
 };
 
-type SubmitState = "idle" | "sending" | "success" | "error";
+type SubmitState = "idle" | "sending" | "success" | "error" | "fallback";
 
 const initialState: FormState = {
   name: "",
@@ -51,7 +51,20 @@ export function ContactForm() {
         body: JSON.stringify(formState),
       });
 
-      const data = (await response.json()) as { error?: string };
+      const data = (await response.json()) as { error?: string; fallbackMailto?: string };
+
+      if (data.fallbackMailto) {
+        const subject = encodeURIComponent(`Portfolio inquiry from ${formState.name}`);
+        const body = encodeURIComponent(
+          `Name: ${formState.name}\nEmail: ${formState.email}\n\nMessage:\n${formState.message}`
+        );
+
+        window.location.href = `mailto:${data.fallbackMailto}?subject=${subject}&body=${body}`;
+        setFormState(initialState);
+        setStatus("Email service is not configured on this deployment. Your email app is opening instead.");
+        setSubmitState("fallback");
+        return;
+      }
 
       if (!response.ok) {
         setStatus(data.error || "Message could not be sent. Please try again.");
@@ -123,6 +136,8 @@ export function ContactForm() {
             className={`rounded-2xl border px-4 py-3 text-xs leading-5 sm:text-sm sm:leading-6 ${
               submitState === "success"
                 ? "border-emerald-400/30 bg-emerald-400/10 text-emerald-100"
+                : submitState === "fallback"
+                  ? "border-amber-400/30 bg-amber-400/10 text-amber-100"
                 : submitState === "error"
                   ? "border-rose-400/30 bg-rose-400/10 text-rose-100"
                   : "border-white/10 bg-white/5 text-slate-400"
