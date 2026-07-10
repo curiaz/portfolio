@@ -33,14 +33,12 @@ const skills = [
     items: [
       { name: "Next.js", icon: "/images/nextjs.png" },
       { name: "FastAPI", icon: "/images/fastapi.png" },
-      { name: "Flask" },
     ],
   },
   {
     category: "Tools",
     description: "Tools and platforms for collaboration, design, data, and deployment.",
     items: [
-      { name: "Git" },
       { name: "GitHub", icon: "/images/github.webp" },
       { name: "VS Code", icon: "/images/vscode.png" },
       { name: "Figma", icon: "/images/figma.png" },
@@ -164,7 +162,7 @@ const contactCards = [
     label: "Email",
     value: "jeremiahcurias@gmail.com",
     href: "mailto:jeremiahcurias@gmail.com",
-    icon: "@",
+    icon: <Image src="/images/gmail.png" alt="Email" width={18} height={18} className="object-contain" />,
   },
   {
     label: "Phone",
@@ -176,7 +174,19 @@ const contactCards = [
     label: "Location",
     value: "Taguig City, Metro Manila",
     href: "https://www.google.com/maps/search/Taguig+City,+Metro+Manila",
-    icon: "M",
+    icon: <Image src="/images/google-maps.png" alt="Location" width={18} height={18} className="object-contain" />,
+  },
+  {
+    label: "GitHub",
+    value: "curiaz",
+    href: "https://github.com/curiaz",
+    icon: <Image src="/images/github.webp" alt="GitHub" width={18} height={18} className="object-contain" />,
+  },
+  {
+    label: "LinkedIn",
+    value: "Jeremiah James Curias",
+    href: "https://www.linkedin.com/in/jeremiah-james-curias-b71076320/",
+    icon: <Image src="/images/linkedin.png" alt="LinkedIn" width={18} height={18} className="object-contain" />,
   },
 ];
 
@@ -208,7 +218,7 @@ export default function Home() {
                     Jeremiah James A. Curias
                   </h1>
                   <p className="mt-2 text-xs font-semibold uppercase tracking-[0.24em] text-slate-400 sm:mt-3 sm:text-sm sm:tracking-[0.35em]">
-                    Software Developer
+                    Aspiring Software Developer
                   </p>
                 </div>
               </div>
@@ -241,7 +251,7 @@ export default function Home() {
               <div className="mt-6 grid gap-2.5 min-[480px]:grid-cols-3 sm:mt-8 sm:gap-3">
                 {[
                   { value: "2026", label: "CS graduate" },
-                  { value: "3", label: "Featured projects" },
+                  { value: "4", label: "Featured projects" },
                   { value: "Full-stack", label: "Web focus" },
                 ].map((stat) => (
                   <div key={stat.label} className="rounded-2xl border border-slate-800 bg-slate-950/70 p-3 sm:rounded-3xl sm:p-4">
@@ -259,7 +269,7 @@ export default function Home() {
                 <div className="flex flex-col gap-3 border-b border-white/5 pb-4 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:pb-5">
                   <div>
                     <p className="text-[11px] uppercase tracking-[0.26em] text-slate-400 sm:text-xs sm:tracking-[0.32em]">Profile</p>
-                    <p className="mt-1.5 text-base font-semibold text-white sm:mt-2 sm:text-lg">Software Developer / Engineer</p>
+                    <p className="mt-1.5 text-base font-semibold text-white sm:mt-2 sm:text-lg">Aspiring Software Developer / Engineer</p>
                   </div>
                   <div className="w-fit rounded-2xl border border-emerald-400/20 bg-emerald-400/10 px-2.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-emerald-200 sm:px-3 sm:py-2 sm:text-xs">
                     Available
@@ -483,8 +493,8 @@ export default function Home() {
             ))}
           </div>
 
-          <ScatterWrapper rotation={1} delay={0.2}>
-            <div className="glass-panel h-full rounded-[22px] p-3.5 sm:rounded-[30px] sm:p-6 md:p-8">
+          <ScatterWrapper rotation={1} delay={0.2} className="h-full">
+            <div className="glass-panel flex h-full flex-col rounded-[22px] p-3.5 sm:rounded-[30px] sm:p-6 md:p-8">
               <div className="flex flex-col gap-3 border-b border-white/5 pb-4 sm:flex-row sm:items-start sm:justify-between sm:gap-4 sm:pb-5">
               <div>
                 <p className="text-[11px] uppercase tracking-[0.24em] text-slate-400 sm:text-xs sm:tracking-[0.35em]">Quick Message</p>
@@ -499,19 +509,10 @@ export default function Home() {
       </section>
 
       <footer className="border-t border-white/5 bg-slate-950/65">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-5 px-4 py-8 text-center sm:px-6 lg:px-8">
-          <p className="max-w-2xl text-sm leading-6 text-slate-400">
-            &copy; 2026 Jeremiah James A. Curias.
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-center px-4 py-8 text-center sm:px-6 lg:px-8">
+          <p className="text-sm leading-6 text-slate-400">
+            &copy; 2026 Jeremiah James A. Curias. All rights reserved.
           </p>
-
-          <div className="flex flex-wrap items-center justify-center gap-3 text-sm">
-            <a className={pillLinkClass} href="https://github.com/curiaz">
-              GitHub
-            </a>
-            <a className={pillLinkClass} href="https://www.linkedin.com/in/curias-jeremiah-james-a-b71076320/">
-              LinkedIn
-            </a>
-          </div>
         </div>
       </footer>
 

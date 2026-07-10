@@ -84,8 +84,8 @@ export function ContactForm() {
   };
 
   return (
-    <form className="mt-4 sm:mt-6" onSubmit={handleSubmit}>
-      <div className="grid gap-4 sm:gap-5">
+    <form className="mt-4 sm:mt-6 flex flex-col grow" onSubmit={handleSubmit}>
+      <div className="flex flex-col grow gap-4 sm:gap-5">
         <div>
           <label htmlFor="name" className="mb-1.5 block text-xs font-medium text-slate-200 sm:mb-2 sm:text-sm">
             Name
@@ -116,17 +116,17 @@ export function ContactForm() {
           />
         </div>
 
-        <div>
+        <div className="flex flex-col grow">
           <label htmlFor="message" className="mb-1.5 block text-xs font-medium text-slate-200 sm:mb-2 sm:text-sm">
             Message
           </label>
           <textarea
             id="message"
             required
-            rows={5}
+            rows={2}
             value={formState.message}
             onChange={(event) => setFormState((current) => ({ ...current, message: event.target.value }))}
-            className="w-full resize-y rounded-2xl border border-white/10 bg-white/5 px-3.5 py-2.5 text-sm text-slate-100 outline-none transition placeholder:text-slate-500 focus:border-cyan-300/50 focus:bg-white/10 sm:px-4 sm:py-3"
+            className="w-full grow !resize-none rounded-2xl border border-white/10 bg-white/5 px-3.5 py-2.5 text-sm text-slate-100 outline-none transition placeholder:text-slate-500 focus:border-cyan-300/50 focus:bg-white/10 sm:px-4 sm:py-3"
             placeholder="Tell me about the role, project, or support you need."
           />
         </div>
@@ -148,7 +148,7 @@ export function ContactForm() {
           </div>
         ) : null}
 
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-end">
+        <div className="mt-auto flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center pt-2">
           <button
             type="submit"
             disabled={isSubmitting}

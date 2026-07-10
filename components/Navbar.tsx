@@ -31,7 +31,6 @@ export function Navbar() {
         <a href="#top" className="group flex min-w-0 items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/60">
           <div className="min-w-0">
             <p className="truncate text-sm font-semibold text-white">Jeremiah James A. Curias</p>
-            <p className="hidden truncate text-xs uppercase tracking-[0.22em] text-slate-400 min-[420px]:block sm:tracking-[0.3em]">Software Developer</p>
           </div>
         </a>
 

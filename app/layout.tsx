@@ -15,9 +15,9 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Jeremiah James A. Curias | Software Developer",
+  title: "Jeremiah James A. Curias | Aspiring Software Developer",
   description:
-    "Modern portfolio for Jeremiah James A. Curias, a software developer focused on web systems, backend APIs, and practical problem solving.",
+    "Modern portfolio for Jeremiah James A. Curias, an aspiring software developer focused on web systems, backend APIs, and practical problem solving.",
 };
 
 export default function RootLayout({
