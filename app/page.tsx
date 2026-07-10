@@ -134,8 +134,8 @@ const featuredProjects = [
       "Production build workflow",
     ],
     accent: "linear-gradient(90deg, rgba(99,102,241,0.95), rgba(34,211,238,0.95), rgba(16,185,129,0.95))",
-    previewSrc: "/images/dev.png",
-    previewPath: "/images/dev.png",
+    previewSrc: "/images/dev-v2.png",
+    previewPath: "/images/dev-v2.png",
     previewAlt: "Developer portfolio website preview",
   },
 ];
@@ -203,7 +203,7 @@ export default function Home() {
 
       <section className="mx-auto max-w-7xl px-3.5 pb-9 pt-5 sm:px-6 sm:pb-12 sm:pt-8 md:pb-14 lg:px-8 lg:pb-20 lg:pt-14">
         <div className="glass-panel relative overflow-hidden rounded-[22px] p-3.5 sm:rounded-[30px] sm:p-6 md:p-8 lg:rounded-[36px] lg:p-12 xl:p-14">
-          <div className="grid items-center gap-7 md:gap-10 lg:grid-cols-[minmax(0,1.12fr)_minmax(320px,0.88fr)]">
+          <div className="grid items-center gap-7 md:gap-10 lg:grid-cols-[minmax(0,1.12fr)_minmax(320px,0.88fr)] lg:items-stretch">
             <ScatterWrapper rotation={-2} className="min-w-0">
               <div className="min-w-0">
               <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/25 bg-cyan-400/10 px-3 py-1.5 text-xs text-cyan-100 sm:px-4 sm:py-2 sm:text-sm">
@@ -226,23 +226,23 @@ export default function Home() {
                 I build reliable web systems with clean interfaces, practical backend logic, and a strong focus on real users.
               </p>
 
-              <div className="mt-6 flex flex-col gap-2.5 sm:mt-8 sm:flex-row sm:flex-wrap sm:gap-3">
+              <div className="mt-6 grid gap-2.5 min-[480px]:grid-cols-3 sm:mt-8 sm:gap-3">
                 <a
                   href="#projects"
-                  className="inline-flex items-center justify-center rounded-full bg-cyan-400 px-5 py-2.5 text-xs font-semibold text-slate-950 transition hover:-translate-y-0.5 hover:bg-cyan-300 hover:shadow-[0_18px_35px_rgba(34,211,238,0.25)] focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/70 sm:px-6 sm:py-3 sm:text-sm"
+                  className="w-full inline-flex items-center justify-center rounded-full bg-cyan-400 px-5 py-2.5 text-xs font-semibold text-slate-950 transition hover:-translate-y-0.5 hover:bg-cyan-300 hover:shadow-[0_18px_35px_rgba(34,211,238,0.25)] focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/70 sm:px-6 sm:py-3 sm:text-sm"
                 >
                   View Projects
                 </a>
                 <a
                   href="#contact"
-                  className="inline-flex items-center justify-center rounded-full border border-slate-700 bg-white/5 px-5 py-2.5 text-xs font-semibold text-white transition hover:-translate-y-0.5 hover:border-cyan-400/40 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/60 sm:px-6 sm:py-3 sm:text-sm"
+                  className="w-full inline-flex items-center justify-center rounded-full border border-slate-700 bg-white/5 px-5 py-2.5 text-xs font-semibold text-white transition hover:-translate-y-0.5 hover:border-cyan-400/40 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/60 sm:px-6 sm:py-3 sm:text-sm"
                 >
                   Contact Me
                 </a>
                 <a
                   href="/Curias_CV.pdf"
                   download
-                  className="inline-flex items-center justify-center rounded-full border border-violet-400/30 bg-violet-500/10 px-5 py-2.5 text-xs font-semibold text-violet-100 transition hover:-translate-y-0.5 hover:border-violet-300/50 hover:bg-violet-500/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-300/60 sm:px-6 sm:py-3 sm:text-sm"
+                  className="w-full inline-flex items-center justify-center rounded-full border border-violet-400/30 bg-violet-500/10 px-5 py-2.5 text-xs font-semibold text-violet-100 transition hover:-translate-y-0.5 hover:border-violet-300/50 hover:bg-violet-500/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-300/60 sm:px-6 sm:py-3 sm:text-sm"
                 >
                   Download CV
                 </a>
@@ -263,9 +263,9 @@ export default function Home() {
               </div>
             </ScatterWrapper>
 
-            <ScatterWrapper rotation={2} delay={0.2} className="relative min-w-0">
-              <aside className="relative min-w-0">
-              <div className="glass-panel relative overflow-hidden rounded-[22px] p-3.5 sm:rounded-[30px] sm:p-5 md:p-6">
+            <ScatterWrapper rotation={2} delay={0.2} className="relative min-w-0 h-full">
+              <aside className="relative min-w-0 h-full">
+              <div className="glass-panel relative flex h-full flex-col justify-between overflow-hidden rounded-[22px] p-3.5 sm:rounded-[30px] sm:p-5 md:p-6">
                 <div className="flex flex-col gap-3 border-b border-white/5 pb-4 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:pb-5">
                   <div>
                     <p className="text-[11px] uppercase tracking-[0.26em] text-slate-400 sm:text-xs sm:tracking-[0.32em]">Profile</p>
