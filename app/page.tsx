@@ -212,7 +212,7 @@ export default function Home() {
               </div>
 
               <div className="mt-4 flex items-center gap-4 sm:gap-5 md:gap-7 lg:gap-8">
-                <ProfileImageModal src="/images/IMG_0332.JPG" alt="Portrait of Jeremiah James A. Curias" />
+                <ProfileImageModal src="/images/curias.jpg" alt="Portrait of Jeremiah James A. Curias" />
                 <div className="min-w-0">
                   <h1 className="max-w-4xl text-[1.75rem] font-semibold leading-tight tracking-tight text-white text-balance min-[390px]:text-4xl md:text-5xl lg:text-[3.35rem] xl:text-6xl">
                     Jeremiah James A. Curias
