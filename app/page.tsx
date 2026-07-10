@@ -6,6 +6,8 @@ import { ProfileImageModal } from "@/components/ProfileImageModal";
 import { ProjectCard } from "@/components/ProjectCard";
 import { SectionHeading } from "@/components/SectionHeading";
 import { SkillBadge } from "@/components/SkillBadge";
+import { ScatterWrapper } from "@/components/ScatterWrapper";
+import Image from "next/image";
 
 const sectionClass = "mx-auto max-w-7xl px-3.5 py-9 sm:px-6 sm:py-12 md:py-14 lg:px-8 lg:py-20";
 const cardClass =
@@ -17,17 +19,34 @@ const skills = [
   {
     category: "Languages",
     description: "Core languages for frontend work, backend logic, and automation.",
-    items: ["Python", "TypeScript", "JavaScript", "HTML", "CSS"],
+    items: [
+      { name: "Python", icon: "/images/python.png" },
+      { name: "TypeScript", icon: "/images/typescript.png" },
+      { name: "JavaScript", icon: "/images/js.png" },
+      { name: "HTML", icon: "/images/html5.png" },
+      { name: "CSS", icon: "/images/css3.png" },
+    ],
   },
   {
     category: "Frameworks",
     description: "Frameworks used for responsive applications and API-driven systems.",
-    items: ["Next.js", "FastAPI", "Flask"],
+    items: [
+      { name: "Next.js", icon: "/images/nextjs.png" },
+      { name: "FastAPI", icon: "/images/fastapi.png" },
+      { name: "Flask" },
+    ],
   },
   {
     category: "Tools",
     description: "Tools and platforms for collaboration, design, data, and deployment.",
-    items: ["Git", "GitHub", "VS Code", "Figma", "Supabase", "Firebase"],
+    items: [
+      { name: "Git" },
+      { name: "GitHub", icon: "/images/github.webp" },
+      { name: "VS Code", icon: "/images/vscode.png" },
+      { name: "Figma", icon: "/images/figma.png" },
+      { name: "Supabase", icon: "/images/supabase.png" },
+      { name: "Firebase", icon: "/images/firebase.png" },
+    ],
   },
 ];
 
@@ -72,8 +91,8 @@ const featuredProjects = [
       "Testing, debugging, and deployment support",
     ],
     accent: "linear-gradient(90deg, rgba(34,211,238,0.95), rgba(59,130,246,0.95), rgba(139,92,246,0.95))",
-    previewSrc: "/medichain.png",
-    previewPath: "/medichain.png",
+    previewSrc: "/images/medichain.png",
+    previewPath: "/images/medichain.png",
     previewAlt: "MediChain website preview",
   },
   {
@@ -87,8 +106,8 @@ const featuredProjects = [
       "Financial monitoring support",
     ],
     accent: "linear-gradient(90deg, rgba(16,185,129,0.95), rgba(34,211,238,0.95), rgba(59,130,246,0.95))",
-    previewSrc: "/pms.png",
-    previewPath: "/pms.png",
+    previewSrc: "/images/pms.png",
+    previewPath: "/images/pms.png",
     previewAlt: "Pawnshop Management System website preview",
   },
   {
@@ -129,12 +148,14 @@ const education = [
     school: "Taguig City University",
     date: "2022 - 2026",
     detail: "Final CGPA: 1.65",
+    previewSrc: "/images/tcu.jpg",
   },
   {
     title: "Senior High School - TechVoc: Computer Programming",
     school: "Western Bicutan National High School",
     date: "2020 - 2022",
     detail: "Final Grade: 94",
+    previewSrc: "/images/wbnhs.png",
   },
 ];
 
@@ -162,16 +183,19 @@ const contactCards = [
 export default function Home() {
   return (
     <main id="top" className="relative overflow-x-hidden">
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 portfolio-grid opacity-25" />
-      <div aria-hidden="true" className="pointer-events-none absolute left-[-10rem] top-20 h-72 w-72 rounded-full bg-cyan-400/12 blur-3xl float-slow" />
-      <div aria-hidden="true" className="pointer-events-none absolute right-[-10rem] top-80 h-80 w-80 rounded-full bg-violet-500/12 blur-3xl float-slow [animation-delay:1.4s]" />
+      <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden" style={{ background: "radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%)" }}>
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+      </div>
 
       <Navbar />
 
       <section className="mx-auto max-w-7xl px-3.5 pb-9 pt-5 sm:px-6 sm:pb-12 sm:pt-8 md:pb-14 lg:px-8 lg:pb-20 lg:pt-14">
         <div className="glass-panel relative overflow-hidden rounded-[22px] p-3.5 sm:rounded-[30px] sm:p-6 md:p-8 lg:rounded-[36px] lg:p-12 xl:p-14">
           <div className="grid items-center gap-7 md:gap-10 lg:grid-cols-[minmax(0,1.12fr)_minmax(320px,0.88fr)]">
-            <div className="fade-up min-w-0">
+            <ScatterWrapper rotation={-2} className="min-w-0">
+              <div className="min-w-0">
               <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/25 bg-cyan-400/10 px-3 py-1.5 text-xs text-cyan-100 sm:px-4 sm:py-2 sm:text-sm">
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_0_5px_rgba(16,185,129,0.12)] sm:h-2 sm:w-2" />
                 Open to opportunities
@@ -226,9 +250,11 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-            </div>
+              </div>
+            </ScatterWrapper>
 
-            <aside className="fade-up-delay-1 relative min-w-0">
+            <ScatterWrapper rotation={2} delay={0.2} className="relative min-w-0">
+              <aside className="relative min-w-0">
               <div className="glass-panel relative overflow-hidden rounded-[22px] p-3.5 sm:rounded-[30px] sm:p-5 md:p-6">
                 <div className="flex flex-col gap-3 border-b border-white/5 pb-4 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:pb-5">
                   <div>
@@ -260,23 +286,28 @@ export default function Home() {
                 </div>
               </div>
             </aside>
+            </ScatterWrapper>
           </div>
         </div>
       </section>
 
       <section id="about" className={sectionClass}>
-        <SectionHeading
-          eyebrow="About"
-          title="Practical software built with care"
-          description="Computer Science graduate with hands-on experience in web development, backend APIs, database integration, testing, and collaborative delivery."
-        />
+        <ScatterWrapper>
+          <SectionHeading
+            eyebrow="About"
+            title="Practical software built with care"
+            description="Computer Science graduate with hands-on experience in web development, backend APIs, database integration, testing, and collaborative delivery."
+          />
+        </ScatterWrapper>
 
         <div className="mt-8 grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(360px,0.9fr)]">
-          <div className={`${cardClass} lg:p-8`}>
-            <p className="text-sm leading-7 text-slate-300 sm:text-base sm:leading-8">
-              I enjoy turning requirements into useful, maintainable systems. My work includes internship development on an operational pawnshop platform and academic project work on a secure healthcare system, with a focus on clean implementation, debugging, documentation, and user-centered decisions.
-            </p>
-          </div>
+          <ScatterWrapper rotation={-2}>
+            <div className={`${cardClass} lg:p-8 h-full`}>
+              <p className="text-sm leading-7 text-slate-300 sm:text-base sm:leading-8">
+                I enjoy turning requirements into useful, maintainable systems. My work includes internship development on an operational pawnshop platform and academic project work on a secure healthcare system, with a focus on clean implementation, debugging, documentation, and user-centered decisions.
+              </p>
+            </div>
+          </ScatterWrapper>
 
           <div className="grid gap-4 md:grid-cols-2">
             {[
@@ -284,59 +315,64 @@ export default function Home() {
               { label: "Data", value: "Records, transactions, and integrations" },
               { label: "Delivery", value: "Testing, debugging, and documentation" },
               { label: "Teamwork", value: "Clear communication and reliable follow-through" },
-            ].map((item) => (
-              <div key={item.label} className={cardClass}>
-                <p className="text-[11px] uppercase tracking-[0.24em] text-cyan-300/80 sm:text-xs sm:tracking-[0.28em]">{item.label}</p>
-                <p className="mt-2 text-xs leading-6 text-slate-200 sm:mt-3 sm:text-sm sm:leading-7">{item.value}</p>
-              </div>
+            ].map((item, index) => (
+              <ScatterWrapper key={item.label} rotation={index % 2 === 0 ? 2 : -2} delay={index * 0.1}>
+                <div className={cardClass}>
+                  <p className="text-[11px] uppercase tracking-[0.24em] text-cyan-300/80 sm:text-xs sm:tracking-[0.28em]">{item.label}</p>
+                  <p className="mt-2 text-xs leading-6 text-slate-200 sm:mt-3 sm:text-sm sm:leading-7">{item.value}</p>
+                </div>
+              </ScatterWrapper>
             ))}
           </div>
         </div>
       </section>
 
       <section id="skills" className={sectionClass}>
-        <SectionHeading
-          eyebrow="Skills"
-          title="Focused stack for modern web delivery"
-          description="A concise toolkit for building responsive interfaces, API-driven features, and maintainable project workflows."
-        />
+        <ScatterWrapper>
+          <SectionHeading
+            eyebrow="Skills"
+            title="Focused stack for modern web delivery"
+            description="A concise toolkit for building responsive interfaces, API-driven features, and maintainable project workflows."
+          />
+        </ScatterWrapper>
 
         <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {skills.map((group, index) => (
-            <article key={group.category} className={`${cardClass} h-full`}>
+            <ScatterWrapper key={group.category} rotation={index % 2 === 0 ? -3 : 3} delay={(index % 3) * 0.1}>
+              <article className={`${cardClass} h-full`}>
               <div className="flex items-center justify-between gap-4">
                 <div>
                   <p className="text-[11px] uppercase tracking-[0.24em] text-slate-400 sm:text-xs sm:tracking-[0.3em]">0{index + 1}</p>
                   <h3 className="mt-1.5 text-lg font-semibold text-white sm:mt-2 sm:text-2xl">{group.category}</h3>
                 </div>
-                <span className="rounded-full border border-slate-700 bg-slate-900 px-2.5 py-1 text-[10px] uppercase tracking-[0.18em] text-slate-300 sm:px-3 sm:text-xs sm:tracking-[0.24em]">
-                  Core
-                </span>
               </div>
               <p className="mt-3 text-xs leading-6 text-slate-300 sm:mt-4 sm:text-sm sm:leading-7">{group.description}</p>
               <div className="mt-4 flex flex-wrap gap-2 sm:mt-5 sm:gap-3">
                 {group.items.map((skill) => (
-                  <SkillBadge key={skill} label={skill} />
+                  <SkillBadge key={skill.name} label={skill.name} icon={skill.icon} />
                 ))}
               </div>
-            </article>
+              </article>
+            </ScatterWrapper>
           ))}
         </div>
       </section>
 
       <section id="experience" className={sectionClass}>
-        <SectionHeading
-          eyebrow="Experience"
-          title="Hands-on work and service experience"
-          description="Development and customer-facing roles that shaped technical delivery, communication, and dependable teamwork."
-        />
+        <ScatterWrapper>
+          <SectionHeading
+            eyebrow="Experience"
+            title="Hands-on work and service experience"
+            description="Development and customer-facing roles that shaped technical delivery, communication, and dependable teamwork."
+          />
+        </ScatterWrapper>
 
         <div className="mt-8 space-y-5">
-          {experience.map((item) => (
-            <article
-              key={`${item.role}-${item.company}`}
-              className={`${cardClass} relative grid gap-5 lg:grid-cols-[minmax(0,220px)_minmax(0,1fr)] lg:p-8 ${item.featured ? "shadow-[0_18px_60px_rgba(34,211,238,0.08)]" : ""}`}
-            >
+          {experience.map((item, index) => (
+            <ScatterWrapper key={`${item.role}-${item.company}`} rotation={index % 2 === 0 ? -2 : 2}>
+              <article
+                className={`${cardClass} relative grid gap-5 lg:grid-cols-[minmax(0,220px)_minmax(0,1fr)] lg:p-8 ${item.featured ? "shadow-[0_18px_60px_rgba(34,211,238,0.08)]" : ""}`}
+              >
               <div className="lg:pr-6">
                 <p className="text-[11px] uppercase tracking-[0.22em] text-cyan-300/80 sm:text-sm sm:tracking-[0.28em]">{item.date}</p>
                 <h3 className="mt-2 text-lg font-semibold text-white sm:mt-3 sm:text-2xl">{item.role}</h3>
@@ -351,23 +387,26 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
-              </div>
-            </article>
+                </div>
+              </article>
+            </ScatterWrapper>
           ))}
         </div>
       </section>
 
       <section id="projects" className={sectionClass}>
-        <SectionHeading
-          eyebrow="Featured Projects"
-          title="Selected work with practical outcomes"
-          description="Projects that show backend integration, data workflows, security awareness, and responsive frontend implementation."
-        />
+        <ScatterWrapper>
+          <SectionHeading
+            eyebrow="Featured Projects"
+            title="Selected work with practical outcomes"
+            description="Projects that show backend integration, data workflows, security awareness, and responsive frontend implementation."
+          />
+        </ScatterWrapper>
 
         <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {featuredProjects.map((project) => (
-            <ProjectCard
-              key={project.title}
+          {featuredProjects.map((project, index) => (
+            <ScatterWrapper key={project.title} rotation={index % 2 === 0 ? -3 : 3} delay={(index % 3) * 0.1}>
+              <ProjectCard
               title={project.title}
               subtitle={project.subtitle}
               description={project.description}
@@ -377,52 +416,76 @@ export default function Home() {
               previewPath={project.previewPath}
               previewAlt={project.previewAlt}
               accent={project.accent}
-            />
+              />
+            </ScatterWrapper>
           ))}
         </div>
       </section>
 
       <section id="education" className={sectionClass}>
-        <SectionHeading
-          eyebrow="Education"
-          title="Academic foundation"
-          description="Formal training in computer science and programming, supported by project-based development experience."
-        />
+        <ScatterWrapper>
+          <SectionHeading
+            eyebrow="Education"
+            title="Academic foundation"
+            description="Formal training in computer science and programming, supported by project-based development experience."
+          />
+        </ScatterWrapper>
 
         <div className="mt-8 grid gap-5 md:grid-cols-2">
-          {education.map((item) => (
-            <article key={item.title} className={cardClass}>
-              <p className="text-[11px] uppercase tracking-[0.24em] text-cyan-300/80 sm:text-xs sm:tracking-[0.28em]">{item.date}</p>
-              <h3 className="mt-2 text-lg font-semibold text-white sm:mt-3 sm:text-2xl">{item.title}</h3>
-              <p className="mt-1.5 text-xs text-slate-400 sm:mt-2 sm:text-sm">{item.school}</p>
-              <p className="mt-4 text-xs leading-6 text-slate-300 sm:mt-5 sm:text-sm sm:leading-7">{item.detail}</p>
-            </article>
+          {education.map((item, index) => (
+            <ScatterWrapper key={item.title} rotation={index % 2 === 0 ? -4 : 4} delay={index * 0.1}>
+              <article className={`${cardClass} flex flex-col h-full`}>
+              {item.previewSrc && (
+                <div className="mb-4 overflow-hidden rounded-[16px] border border-white/10 sm:mb-5 sm:rounded-[20px]">
+                  <div className="relative aspect-[16/9]">
+                    <Image
+                      src={item.previewSrc}
+                      alt={`${item.school} preview`}
+                      fill
+                      className="object-cover transition duration-500 hover:scale-[1.02]"
+                      sizes="(min-width: 768px) 50vw, 100vw"
+                    />
+                  </div>
+                </div>
+              )}
+              <div className="flex flex-col grow">
+                <p className="text-[11px] uppercase tracking-[0.24em] text-cyan-300/80 sm:text-xs sm:tracking-[0.28em]">{item.date}</p>
+                <h3 className="mt-2 text-lg font-semibold text-white sm:mt-3 sm:text-2xl">{item.title}</h3>
+                <p className="mt-1.5 text-xs text-slate-400 sm:mt-2 sm:text-sm">{item.school}</p>
+                <p className="mt-4 text-xs leading-6 text-slate-300 sm:mt-auto sm:pt-4 sm:text-sm sm:leading-7">{item.detail}</p>
+              </div>
+              </article>
+            </ScatterWrapper>
           ))}
         </div>
       </section>
 
       <section id="contact" className={sectionClass}>
-        <SectionHeading
-          eyebrow="Contact"
-          title="Let's discuss roles and project opportunities"
-          description="Open to software development, web development, system support, and entry-level IT opportunities."
-        />
+        <ScatterWrapper>
+          <SectionHeading
+            eyebrow="Contact"
+            title="Let's discuss roles and project opportunities"
+            description="Open to software development, web development, system support, and entry-level IT opportunities."
+          />
+        </ScatterWrapper>
 
         <div className="mt-8 grid gap-5 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)]">
           <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-1">
-            {contactCards.map((card) => (
-              <ContactCard
-                key={card.label}
-                label={card.label}
-                value={card.value}
-                href={card.href}
-                icon={<span aria-hidden="true">{card.icon}</span>}
-              />
+            {contactCards.map((card, index) => (
+              <ScatterWrapper key={card.label} rotation={index % 2 === 0 ? -3 : 3} delay={index * 0.1}>
+                <ContactCard
+                  label={card.label}
+                  value={card.value}
+                  href={card.href}
+                  icon={<span aria-hidden="true">{card.icon}</span>}
+                />
+              </ScatterWrapper>
             ))}
           </div>
 
-          <div className="glass-panel rounded-[22px] p-3.5 sm:rounded-[30px] sm:p-6 md:p-8">
-            <div className="flex flex-col gap-3 border-b border-white/5 pb-4 sm:flex-row sm:items-start sm:justify-between sm:gap-4 sm:pb-5">
+          <ScatterWrapper rotation={1} delay={0.2}>
+            <div className="glass-panel h-full rounded-[22px] p-3.5 sm:rounded-[30px] sm:p-6 md:p-8">
+              <div className="flex flex-col gap-3 border-b border-white/5 pb-4 sm:flex-row sm:items-start sm:justify-between sm:gap-4 sm:pb-5">
               <div>
                 <p className="text-[11px] uppercase tracking-[0.24em] text-slate-400 sm:text-xs sm:tracking-[0.35em]">Quick Message</p>
                 <h3 className="mt-1.5 text-lg font-semibold text-white sm:mt-2 sm:text-2xl">Email Me</h3>
@@ -430,7 +493,8 @@ export default function Home() {
             </div>
 
             <ContactForm />
-          </div>
+            </div>
+          </ScatterWrapper>
         </div>
       </section>
 

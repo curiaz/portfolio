@@ -30,7 +30,7 @@ export default function RootLayout({
       lang="en"
       className={`${spaceGrotesk.variable} ${ibmPlexMono.variable} h-full scroll-smooth antialiased`}
     >
-      <body className="min-h-full bg-[rgb(var(--background-rgb))] text-[rgb(var(--foreground-rgb))]">
+      <body className="min-h-full text-[rgb(var(--foreground-rgb))]">
         {children}
         <Analytics />
       </body>

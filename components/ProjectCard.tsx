@@ -72,9 +72,6 @@ export function ProjectCard({
               {subtitle || "Project subtitle placeholder"}
             </p>
           </div>
-          <span className="hidden shrink-0 rounded-full border border-slate-700 bg-slate-900 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-slate-300 min-[380px]:inline-flex">
-            Case
-          </span>
         </div>
 
         <p className="min-h-[4.5rem] text-xs leading-6 text-slate-300 sm:min-h-[5.25rem] sm:text-sm sm:leading-7">{description}</p>
