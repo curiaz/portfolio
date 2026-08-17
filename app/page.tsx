@@ -79,14 +79,14 @@ const experience = [
 const featuredProjects = [
   {
     title: "MediChain",
-    subtitle: "AI-Driven Diagnosis and Prescription System",
+    subtitle: "AI-Driven Diagnosis and Prescription System for Common Illnesses",
     description:
-      "Healthcare-focused academic system for diagnosis and prescription support with secure record handling.",
-    tech: ["Python", "TypeScript", "Next.js", "FastAPI", "Blockchain", "AES", "SHA-256"],
+      "Thesis project featuring diagnosis, prescription, and appointment management with account verification, video-call integration, database migrations, and CI/CD.",
+    tech: ["JavaScript", "Python", "CSS", "PostgreSQL", "PLpgSQL", "Supabase", "Firebase", "Jupyter Notebook"],
     highlights: [
-      "AI-assisted diagnosis workflow",
-      "Encrypted health record handling",
-      "Testing, debugging, and deployment support",
+      "AI-driven diagnosis & electronic prescription workflows",
+      "Secure account verification & real-time video-call integration",
+      "Automated database migrations & CI/CD deployment pipeline",
     ],
     accent: "linear-gradient(90deg, rgba(34,211,238,0.95), rgba(59,130,246,0.95), rgba(139,92,246,0.95))",
     previewSrc: "/images/medichain.png",
@@ -94,14 +94,47 @@ const featuredProjects = [
     previewAlt: "MediChain website preview",
   },
   {
-    title: "Pawnshop Management System",
+    title: "Mercato",
+    subtitle: "E-Commerce Content Management System",
     description:
-      "Operational web platform for customer records, pawn transactions, payments, renewals, redemptions, and branch monitoring.",
+      "Visual e-commerce website builder with Figma-style drag-and-drop editing, reusable sections, product binding, dynamic product components, and configurable themes.",
+    tech: ["TypeScript", "JavaScript", "React", "Craft.js", "Node.js", "Firebase", "Tailwind CSS", "Figma"],
+    highlights: [
+      "Figma-style drag-and-drop canvas editing with Craft.js",
+      "Reusable section architecture & dynamic product data binding",
+      "Configurable store themes with real-time preview & canvas interactions",
+    ],
+    accent: "linear-gradient(90deg, rgba(236,72,153,0.95), rgba(244,63,94,0.95), rgba(249,115,22,0.95))",
+    previewSrc: "/images/mercato.png",
+    previewPath: "/images/mercato.png",
+    previewAlt: "Mercato website preview",
+  },
+  {
+    title: "Inspire Cinema",
+    subtitle: "Ticket & Cinema Booking System",
+    description:
+      "Ticketing platform with responsive landing, seat selection, checkout, frontend payment flow, and robust backend booking and payment logic.",
+    tech: ["TypeScript", "HTML/CSS", "Node.js", "Next.js", "React", "Tailwind CSS", "Prisma", "PostgreSQL"],
+    highlights: [
+      "Interactive movie browsing & visual seat selection matrix",
+      "End-to-end checkout & frontend payment integration flows",
+      "Reliable backend booking logic & ticket reservation management",
+    ],
+    accent: "linear-gradient(90deg, rgba(245,158,11,0.95), rgba(234,88,12,0.95), rgba(239,68,68,0.95))",
+    previewSrc: "/images/cinema.png",
+    previewPath: "/images/cinema.png",
+    previewAlt: "Inspire Cinema Ticket System website preview",
+  },
+  {
+    title: "Pawnshop Management System",
+    subtitle: "Branch Operations & Financial Monitoring Platform",
+    description:
+      "Pawnshop management system with branch finance tracking, employee authorization, inventory management, daily operational sessions, real-time alerts, and QR scanning.",
     tech: ["NestJS", "TypeScript", "Prisma", "PostgreSQL", "Supabase", "JWT", "Redis", "Jest", "Next.js", "React", "Tailwind CSS"],
     highlights: [
-      "Branch operations workflow",
-      "Customer and transaction tracking",
-      "Financial monitoring support",
+      "Branch finance tracking, employee authorization & role security",
+      "Real-time operational alerts, QR-code scanning & printable PDF reports",
+      "Daily operational session management & inventory expiration monitoring",
     ],
     accent: "linear-gradient(90deg, rgba(16,185,129,0.95), rgba(34,211,238,0.95), rgba(59,130,246,0.95))",
     previewSrc: "/images/pms.png",
@@ -109,34 +142,68 @@ const featuredProjects = [
     previewAlt: "Pawnshop Management System website preview",
   },
   {
-    title: "Inspire Cinema Ticket System",
+    title: "QuickPawn PMS",
+    subtitle: "Multi-Tenant SaaS Platform",
     description:
-      "A cinema booking web app with public movie and ticket flows, plus an admin dashboard for managing cinema operations.",
-    tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "JavaScript", "Prisma ORM", "PostgreSQL"],
+      "Multi-tenant SaaS pawnshop management platform with responsive dashboards, REST APIs, database models, secure multi-branch access control, and scalable workflows.",
+    tech: ["TypeScript", "Next.js", "React", "Tailwind CSS", "NestJS", "Node.js", "PostgreSQL", "Prisma", "Supabase", "Docker", "Jest"],
     highlights: [
-      "Public browsing and ticket booking flows",
-      "Admin dashboard for cinema operations",
-      "Database-backed feature set with Prisma and PostgreSQL",
+      "Multi-tenant architecture with secure isolated branch access control",
+      "High-performance REST APIs & scalable database models with Prisma",
+      "Responsive analytics dashboards & end-to-end business workflows",
     ],
-    accent: "linear-gradient(90deg, rgba(245,158,11,0.95), rgba(34,211,238,0.95), rgba(59,130,246,0.95))",
-    previewSrc: "/images/cinema.png",
-    previewPath: "/images/cinema.png",
-    previewAlt: "Inspire Cinema Ticket System website preview",
+    accent: "linear-gradient(90deg, rgba(14,165,233,0.95), rgba(99,102,241,0.95), rgba(168,85,247,0.95))",
+    previewSrc: "/images/quickpawn.png",
+    previewPath: "/images/quickpawn.png",
+    previewAlt: "QuickPawn PMS SaaS website preview",
   },
   {
-    title: "Developer Portfolio Website",
+    title: "QuickPawn Admin Portal",
+    subtitle: "Multi-Tenant SaaS Administration & Billing",
     description:
-      "Responsive portfolio built with reusable components, concise content, and a recruiter-friendly structure.",
-    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
+      "Multi-tenant SaaS administration portal with automated tenant provisioning, subscription and billing management, role-based access control, and transactional emails.",
+    tech: ["Next.js", "React", "NestJS", "TypeScript", "Tailwind CSS", "PostgreSQL", "Prisma ORM", "Supabase"],
     highlights: [
-      "Single-page responsive layout",
-      "Reusable component system",
-      "Production build workflow",
+      "Automated tenant onboarding, provisioning & tier management",
+      "Subscription lifecycle, invoice tracking & billing management",
+      "Role-based access control (RBAC) & transactional email notifications",
     ],
-    accent: "linear-gradient(90deg, rgba(99,102,241,0.95), rgba(34,211,238,0.95), rgba(16,185,129,0.95))",
-    previewSrc: "/images/dev-v2.png",
-    previewPath: "/images/dev-v2.png",
-    previewAlt: "Developer portfolio website preview",
+    accent: "linear-gradient(90deg, rgba(139,92,246,0.95), rgba(217,70,239,0.95), rgba(244,63,94,0.95))",
+    previewSrc: "/images/quickpawn-admin.png",
+    previewPath: "/images/quickpawn-admin.png",
+    previewAlt: "QuickPawn PMS Admin Portal preview",
+  },
+  {
+    title: "ServiceWho",
+    subtitle: "Service Marketplace Platform",
+    description:
+      "Service marketplace connecting customers with service providers through role-based authentication, service browsing, booking management, and secure database architecture.",
+    tech: ["Next.js", "React", "Node.js", "Express.js", "TypeScript", "PostgreSQL", "Prisma", "Tailwind CSS"],
+    highlights: [
+      "Dual role-based authentication & profile handling for users and providers",
+      "Interactive category browsing, search filters & booking management",
+      "Secure relational data architecture powered by Prisma & PostgreSQL",
+    ],
+    accent: "linear-gradient(90deg, rgba(20,184,166,0.95), rgba(6,182,212,0.95), rgba(59,130,246,0.95))",
+    previewSrc: "/images/servicewho.png",
+    previewPath: "/images/servicewho.png",
+    previewAlt: "ServiceWho Marketplace Platform preview",
+  },
+  {
+    title: "BETH",
+    subtitle: "Binance & Ethereum Algorithmic Trading Platform",
+    description:
+      "Personal algorithmic trading research platform for BTC/USDT and ETH/USDT with backtesting, paper trading, historical data analysis, and a monitoring dashboard.",
+    tech: ["Python", "PostgreSQL", "SQLite", "Next.js", "TypeScript", "Tailwind CSS"],
+    highlights: [
+      "BTC/USDT & ETH/USDT automated strategy research & execution engine",
+      "Comprehensive backtesting simulator with historical data analysis",
+      "Real-time web monitoring dashboard for active strategies and paper trades",
+    ],
+    accent: "linear-gradient(90deg, rgba(234,179,8,0.95), rgba(249,115,22,0.95), rgba(16,185,129,0.95))",
+    previewSrc: "/images/beth.png",
+    previewPath: "/images/beth.png",
+    previewAlt: "BETH Algorithmic Trading Platform preview",
   },
 ];
 
@@ -251,7 +318,7 @@ export default function Home() {
               <div className="mt-6 grid gap-2.5 min-[480px]:grid-cols-3 sm:mt-8 sm:gap-3">
                 {[
                   { value: "2026", label: "CS graduate" },
-                  { value: "4", label: "Featured projects" },
+                  { value: "8", label: "Featured projects" },
                   { value: "Full-stack", label: "Web focus" },
                 ].map((stat) => (
                   <div key={stat.label} className="rounded-2xl border border-slate-800 bg-slate-950/70 p-3 sm:rounded-3xl sm:p-4">
