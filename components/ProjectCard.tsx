@@ -7,6 +7,7 @@ import { useBodyScrollLock } from "@/hooks/useBodyScrollLock";
 
 type ProjectCardProps = {
   title: string;
+  projectType?: string;
   subtitle?: string;
   description: string;
   tech: string[];
@@ -22,6 +23,7 @@ const imageTransitionDuration = 350;
 
 export function ProjectCard({
   title,
+  projectType = "Featured Project",
   subtitle,
   description,
   tech,
@@ -368,9 +370,7 @@ export function ProjectCard({
 
         <div className="mb-2.5 flex items-start justify-between gap-2 sm:mb-5 sm:min-h-[8.25rem] sm:gap-4">
           <div className="min-w-0">
-            <p className="text-[8px] uppercase tracking-[0.12em] text-cyan-300/80 sm:text-xs sm:tracking-[0.3em]">
-              Featured Project
-            </p>
+            <p className="text-[8px] uppercase tracking-[0.12em] text-cyan-300/80 sm:text-xs sm:tracking-[0.3em]">{projectType}</p>
             <h3 className="mt-1 line-clamp-3 text-sm font-semibold leading-snug text-white sm:mt-2 sm:min-h-[4rem] sm:text-2xl">
               {title}
             </h3>
@@ -458,7 +458,7 @@ export function ProjectCard({
                 </button>
                 <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-4">
                   <div className="mb-4 min-h-9 pr-11">
-                    <p className="text-[10px] uppercase tracking-[0.18em] text-cyan-300/80">Featured Project</p>
+                    <p className="text-[10px] uppercase tracking-[0.18em] text-cyan-300/80">{projectType}</p>
                     <h2 className="mt-1 text-xl font-semibold leading-tight text-white">{title}</h2>
                     {subtitle ? <p className="mt-1 text-sm font-medium leading-5 text-slate-300">{subtitle}</p> : null}
                   </div>

@@ -83,6 +83,7 @@ const experience = [
 const featuredProjects = [
   {
     title: "MediChain",
+    projectType: "Thesis Project",
     subtitle: "AI-Driven Diagnosis and Prescription System for Common Illnesses",
     description:
       "Thesis project featuring diagnosis, prescription, and appointment management with account verification, video-call integration, database migrations, and CI/CD.",
@@ -208,6 +209,7 @@ const featuredProjects = [
   },
   {
     title: "ServiceWho",
+    projectType: "Personal Project",
     subtitle: "Service Marketplace Platform",
     description:
       "Service marketplace connecting customers with service providers through role-based authentication, service browsing, booking management, and secure database architecture.",
@@ -224,6 +226,7 @@ const featuredProjects = [
   },
   {
     title: "BETH",
+    projectType: "Personal Project",
     subtitle: "Binance & Ethereum Algorithmic Trading Platform",
     description:
       "Personal algorithmic trading research platform for BTC/USDT and ETH/USDT with backtesting, paper trading, historical data analysis, and a monitoring dashboard.",
@@ -583,6 +586,7 @@ export default function Home() {
             <ScatterWrapper key={project.title} rotation={index % 2 === 0 ? -3 : 3} delay={(index % 3) * 0.1}>
               <ProjectCard
               title={project.title}
+              projectType={"projectType" in project ? project.projectType : undefined}
               subtitle={project.subtitle}
               description={project.description}
               tech={project.tech}
