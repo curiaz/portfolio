@@ -17,6 +17,8 @@ type ProjectCardProps = {
   accent: string;
 };
 
+const imageTransitionDuration = 350;
+
 export function ProjectCard({
   title,
   subtitle,
@@ -38,8 +40,14 @@ export function ProjectCard({
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPreviewMounted, setIsPreviewMounted] = useState(false);
   const [isPreviewVisible, setIsPreviewVisible] = useState(false);
+  const [isImageReady, setIsImageReady] = useState(false);
+  const [imageTransform, setImageTransform] = useState("translate(0, 0) scale(1, 1)");
+  const [imageTransitionEnabled, setImageTransitionEnabled] = useState(false);
   const previewButtonRef = useRef<HTMLButtonElement>(null);
-  const closeTimerRef = useRef<number | null>(null);
+  const imagePanelRef = useRef<HTMLDivElement>(null);
+  const sourceRectRef = useRef<DOMRect | null>(null);
+  const targetRectRef = useRef<DOMRect | null>(null);
+  const isClosingRef = useRef(false);
   const activeImage = availableImages.length > 0 ? availableImages[activeIndex % availableImages.length] : undefined;
 
   const showPreviousImage = () => {
@@ -51,15 +59,80 @@ export function ProjectCard({
   };
 
   const closePreview = useCallback(() => {
-    setIsPreviewVisible(false);
-    if (closeTimerRef.current !== null) {
-      window.clearTimeout(closeTimerRef.current);
+    if (isClosingRef.current) {
+      return;
     }
-    closeTimerRef.current = window.setTimeout(() => {
+
+    isClosingRef.current = true;
+    setIsPreviewVisible(false);
+    const sourceRect = sourceRectRef.current;
+    const targetRect = targetRectRef.current;
+    const imagePanel = imagePanelRef.current;
+
+    if (
+      !sourceRect ||
+      !targetRect ||
+      !imagePanel ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
       setIsPreviewMounted(false);
+      setIsImageReady(false);
       previewButtonRef.current?.focus();
-    }, 300);
+      return;
+    }
+
+    const scaleX = sourceRect.width / targetRect.width;
+    const scaleY = sourceRect.height / targetRect.height;
+    const translateX = sourceRect.left - targetRect.left;
+    const translateY = sourceRect.top - targetRect.top;
+
+    setImageTransitionEnabled(true);
+    setImageTransform(`translate(${translateX}px, ${translateY}px) scale(${scaleX}, ${scaleY})`);
   }, []);
+
+  useEffect(() => {
+    if (!isPreviewMounted) {
+      return;
+    }
+
+    let secondFrameId = 0;
+    const firstFrameId = window.requestAnimationFrame(() => {
+      const sourceRect = sourceRectRef.current;
+      const imagePanel = imagePanelRef.current;
+
+      if (!sourceRect || !imagePanel || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        setIsImageReady(true);
+        setIsPreviewVisible(true);
+        return;
+      }
+
+      const targetRect = imagePanel.getBoundingClientRect();
+      targetRectRef.current = targetRect;
+      const scaleX = sourceRect.width / targetRect.width;
+      const scaleY = sourceRect.height / targetRect.height;
+      const translateX = sourceRect.left - targetRect.left;
+      const translateY = sourceRect.top - targetRect.top;
+
+      setImageTransitionEnabled(false);
+      setImageTransform(`translate(${translateX}px, ${translateY}px) scale(${scaleX}, ${scaleY})`);
+
+      secondFrameId = window.requestAnimationFrame(() => {
+        if (isClosingRef.current) {
+          return;
+        }
+
+        setImageTransitionEnabled(true);
+        setIsImageReady(true);
+        setImageTransform("translate(0, 0) scale(1, 1)");
+        setIsPreviewVisible(true);
+      });
+    });
+
+    return () => {
+      window.cancelAnimationFrame(firstFrameId);
+      window.cancelAnimationFrame(secondFrameId);
+    };
+  }, [isPreviewMounted]);
 
   useEffect(() => {
     if (!isPreviewMounted) {
@@ -83,14 +156,6 @@ export function ProjectCard({
   }, [closePreview, isPreviewMounted]);
 
   useEffect(() => {
-    return () => {
-      if (closeTimerRef.current !== null) {
-        window.clearTimeout(closeTimerRef.current);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
     if (isPreviewMounted || availableImages.length < 2) {
       return;
     }
@@ -102,13 +167,23 @@ export function ProjectCard({
     return () => window.clearInterval(intervalId);
   }, [availableImages.length, isPreviewMounted]);
 
-  const openPreview = () => {
-    if (closeTimerRef.current !== null) {
-      window.clearTimeout(closeTimerRef.current);
-      closeTimerRef.current = null;
-    }
+  const openPreview = (event: React.MouseEvent<HTMLButtonElement>) => {
+    isClosingRef.current = false;
+    setIsImageReady(false);
+    setIsPreviewVisible(false);
+    sourceRectRef.current = event.currentTarget.getBoundingClientRect();
+    targetRectRef.current = null;
+    setImageTransitionEnabled(false);
+    setImageTransform("translate(0, 0) scale(1, 1)");
     setIsPreviewMounted(true);
-    window.requestAnimationFrame(() => setIsPreviewVisible(true));
+  };
+
+  const handleImageTransitionEnd = (event: React.TransitionEvent<HTMLDivElement>) => {
+    if (isClosingRef.current && event.target === event.currentTarget && event.propertyName === "transform") {
+      setIsPreviewMounted(false);
+      setIsImageReady(false);
+      previewButtonRef.current?.focus();
+    }
   };
 
   return (
@@ -208,72 +283,82 @@ export function ProjectCard({
               aria-label={`${title} image preview`}
               aria-hidden={!isPreviewVisible}
               inert={!isPreviewVisible}
-              className={`fixed inset-0 z-[90] flex items-center justify-center bg-slate-950/90 p-3 transition-[opacity,backdrop-filter] duration-300 ease-out motion-reduce:transition-none sm:p-6 ${isPreviewVisible ? "opacity-100 backdrop-blur-md" : "opacity-0 backdrop-blur-none"}`}
-              onMouseDown={(event) => {
-                if (event.target === event.currentTarget) {
-                  closePreview();
-                }
-              }}
+              className="fixed inset-0 z-[90] flex items-center justify-center overflow-hidden p-3 sm:p-6"
             >
-              <div className={`relative w-[min(95vw,1440px)] overflow-hidden rounded-2xl border border-white/10 bg-slate-950 shadow-[0_24px_90px_rgba(0,0,0,0.65)] transition-[transform,opacity] duration-300 ease-out motion-reduce:transition-none sm:rounded-3xl ${isPreviewVisible ? "scale-100 opacity-100" : "scale-95 opacity-0"}`}>
+              <div
+                aria-hidden="true"
+                onMouseDown={closePreview}
+                className={`absolute inset-0 bg-slate-950/90 transition-[opacity,backdrop-filter] duration-300 ease-out motion-reduce:transition-none ${isPreviewVisible ? "opacity-100 backdrop-blur-md" : "opacity-0 backdrop-blur-none"}`}
+              />
+              <div
+                ref={imagePanelRef}
+                className="relative z-10 aspect-[16/10] w-[min(95vw,1440px,128dvh)] overflow-hidden rounded-[18px] border border-white/10 bg-slate-950 shadow-[0_24px_90px_rgba(0,0,0,0.65)] will-change-transform sm:rounded-[22px]"
+                onTransitionEnd={handleImageTransitionEnd}
+                style={{
+                  transform: imageTransform,
+                  transformOrigin: "top left",
+                  visibility: isImageReady ? "visible" : "hidden",
+                  transition: imageTransitionEnabled
+                    ? `transform ${imageTransitionDuration}ms cubic-bezier(0.22, 1, 0.36, 1)`
+                    : "none",
+                }}
+              >
                 <button
                   type="button"
                   autoFocus
                   aria-label="Close image preview"
                   onClick={closePreview}
-                  className="absolute right-3 top-3 z-10 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-slate-950/80 text-xl leading-none text-white transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+                  className={`absolute right-3 top-3 z-20 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-slate-950/80 text-xl leading-none text-white transition-[opacity,background-color] duration-200 hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 ${isPreviewVisible ? "opacity-100" : "opacity-0"}`}
                 >
                   &times;
                 </button>
-                <div className="relative aspect-video max-h-[78dvh] bg-black/30">
-                  {availableImages.map((src, index) => (
-                    <div
-                      key={src}
-                      aria-hidden={index !== activeIndex % availableImages.length}
-                      className={`absolute inset-0 transition-opacity duration-500 ease-in-out motion-reduce:transition-none ${index === activeIndex % availableImages.length ? "opacity-100" : "opacity-0"}`}
+                {availableImages.map((src, index) => (
+                  <div
+                    key={src}
+                    aria-hidden={index !== activeIndex % availableImages.length}
+                    className={`absolute inset-0 transition-opacity duration-500 ease-in-out motion-reduce:transition-none ${index === activeIndex % availableImages.length ? "opacity-100" : "opacity-0"}`}
+                  >
+                    <Image
+                      src={src}
+                      alt={`${previewAlt} ${index + 1}`}
+                      fill
+                      sizes="95vw"
+                      className="object-contain"
+                    />
+                  </div>
+                ))}
+                {availableImages.length > 1 ? (
+                  <>
+                    <button
+                      type="button"
+                      aria-label="Previous project image"
+                      onClick={showPreviousImage}
+                      className={`absolute left-3 top-1/2 z-10 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-slate-950/80 text-xl text-white transition-[opacity,background-color] duration-200 hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 ${isPreviewVisible ? "opacity-100" : "opacity-0"}`}
                     >
-                      <Image
-                        src={src}
-                        alt={`${previewAlt} ${index + 1}`}
-                        fill
-                        sizes="95vw"
-                        className="object-contain"
-                      />
+                      <span aria-hidden="true">&lsaquo;</span>
+                    </button>
+                    <button
+                      type="button"
+                      aria-label="Next project image"
+                      onClick={showNextImage}
+                      className={`absolute right-3 top-1/2 z-10 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-slate-950/80 text-xl text-white transition-[opacity,background-color] duration-200 hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 ${isPreviewVisible ? "opacity-100" : "opacity-0"}`}
+                    >
+                      <span aria-hidden="true">&rsaquo;</span>
+                    </button>
+                    <div className={`absolute inset-x-0 bottom-3 z-10 flex justify-center gap-2 transition-opacity duration-200 ${isPreviewVisible ? "opacity-100" : "opacity-0"}`}>
+                      {availableImages.map((src, index) => (
+                        <button
+                          key={src}
+                          type="button"
+                          aria-label={`Show image ${index + 1}`}
+                          aria-current={index === activeIndex % availableImages.length}
+                          onClick={() => setActiveIndex(index)}
+                          className={`h-2.5 w-2.5 rounded-full border border-white/70 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 ${index === activeIndex % availableImages.length ? "bg-cyan-300" : "bg-slate-950/70 hover:bg-white/70"}`}
+                        />
+                      ))}
                     </div>
-                  ))}
-                  {availableImages.length > 1 ? (
-                    <>
-                      <button
-                        type="button"
-                        aria-label="Previous project image"
-                        onClick={showPreviousImage}
-                        className="absolute left-3 top-1/2 z-10 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-slate-950/80 text-xl text-white transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
-                      >
-                        <span aria-hidden="true">&lsaquo;</span>
-                      </button>
-                      <button
-                        type="button"
-                        aria-label="Next project image"
-                        onClick={showNextImage}
-                        className="absolute right-3 top-1/2 z-10 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-slate-950/80 text-xl text-white transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
-                      >
-                        <span aria-hidden="true">&rsaquo;</span>
-                      </button>
-                      <div className="absolute inset-x-0 bottom-3 z-10 flex justify-center gap-2">
-                        {availableImages.map((src, index) => (
-                          <button
-                            key={src}
-                            type="button"
-                            aria-label={`Show image ${index + 1}`}
-                            aria-current={index === activeIndex % availableImages.length}
-                            onClick={() => setActiveIndex(index)}
-                            className={`h-2.5 w-2.5 rounded-full border border-white/70 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 ${index === activeIndex % availableImages.length ? "bg-cyan-300" : "bg-slate-950/70 hover:bg-white/70"}`}
-                          />
-                        ))}
-                      </div>
-                    </>
-                  ) : null}
-                </div>
+                  </>
+                ) : null}
               </div>
             </div>,
             document.body,

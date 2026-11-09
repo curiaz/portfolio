@@ -50,27 +50,27 @@ const skills = [
 
 const experience = [
   {
-    role: "Software Developer Intern",
-    company: "Inspire Holdings Inc.",
-    date: "Feb 2026 - Jun 2026",
+    role: "Software Developer",
+    company: "Inspire Next Global Inc.",
+    date: "Jun 2026 - Sept 2026",
     description:
-      "Contributed to a web-based pawnshop management system for branch operations, customer records, transactions, payments, renewals, redemptions, and financial monitoring.",
+      "Contributed to QuickPawn PMS with real-time alerts, QR-code transaction scanning, printable PDF reports, and inventory-expiration notifications, and supported the backend migration to Prisma.",
     highlights: [
-      "Built and refined backend APIs, database integrations, and business logic.",
-      "Helped improve transaction accuracy and day-to-day operational workflows.",
-      "Worked with the team on requirements, troubleshooting, testing, and release stabilization.",
+      "Built real-time alerts, QR-code transaction scanning, and printable PDF reports.",
+      "Implemented inventory-expiration notifications.",
+      "Supported the backend migration to Prisma.",
     ],
     featured: true,
   },
   {
-    role: "Service Crew",
-    company: "McDonald's 32nd St. BGC - GADC",
-    date: "Jun 2023 - Dec 2023",
+    role: "Software Developer Intern",
+    company: "Inspire Holdings Inc.",
+    date: "Feb 2026 - Jun 2026",
     description:
-      "Supported cashier, lobby, dining, and customer-facing operations in a fast-paced service environment.",
+      "Developed product browsing and checkout interfaces, inventory management tools, and drag-and-drop web-builder components with configurable themes.",
     highlights: [
-      "Strengthened communication, discipline, and attention to detail under pressure.",
-      "Built dependable teamwork habits through daily operations and customer support.",
+      "Built product browsing and checkout UI, inventory tools, and themed drag-and-drop web-builder components.",
+      "Fixed UI and build issues to improve application stability.",
     ],
     featured: false,
   },
