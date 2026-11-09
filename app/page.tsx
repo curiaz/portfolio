@@ -259,7 +259,7 @@ const contactCards = [
 
 export default function Home() {
   return (
-    <main id="top" className="relative overflow-x-hidden">
+    <main id="top" className="relative overflow-x-clip">
       <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden" style={{ background: "radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%)" }}>
         <div id="stars"></div>
         <div id="stars2"></div>
