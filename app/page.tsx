@@ -122,6 +122,15 @@ const featuredProjects = [
     ],
     accent: "linear-gradient(90deg, rgba(245,158,11,0.95), rgba(234,88,12,0.95), rgba(239,68,68,0.95))",
     previewSrc: "/images/cinema.png",
+    previewImages: [
+      "/images/cinema.png",
+      "/images/ticket1.png",
+      "/images/ticket2.png",
+      "/images/ticket3.png",
+      "/images/ticket4.png",
+      "/images/ticket5.png",
+      "/images/ticket6.png",
+    ],
     previewPath: "/images/cinema.png",
     previewAlt: "Inspire Cinema Ticket System website preview",
   },
@@ -138,6 +147,14 @@ const featuredProjects = [
     ],
     accent: "linear-gradient(90deg, rgba(16,185,129,0.95), rgba(34,211,238,0.95), rgba(59,130,246,0.95))",
     previewSrc: "/images/pms.png",
+    previewImages: [
+      "/images/pms.png",
+      "/images/pms1.png",
+      "/images/pms2.png",
+      "/images/pms3.png",
+      "/images/pms4.png",
+      "/images/pms5.png",
+    ],
     previewPath: "/images/pms.png",
     previewAlt: "Pawnshop Management System website preview",
   },
@@ -154,6 +171,12 @@ const featuredProjects = [
     ],
     accent: "linear-gradient(90deg, rgba(14,165,233,0.95), rgba(99,102,241,0.95), rgba(168,85,247,0.95))",
     previewSrc: "/images/quickpawn.png",
+    previewImages: [
+      "/images/quickpawn.png",
+      "/images/pmssaas1.png",
+      "/images/pmssaas2.jpg",
+      "/images/pmssaas3.png",
+    ],
     previewPath: "/images/quickpawn.png",
     previewAlt: "QuickPawn PMS SaaS website preview",
   },
@@ -169,7 +192,13 @@ const featuredProjects = [
       "Role-based access control (RBAC) & transactional email notifications",
     ],
     accent: "linear-gradient(90deg, rgba(139,92,246,0.95), rgba(217,70,239,0.95), rgba(244,63,94,0.95))",
-    previewSrc: "/images/quickpawn-admin.png",
+    previewSrc: "/images/Quickpawn_Admin.png",
+    previewImages: [
+      "/images/Quickpawn_Admin.png",
+      "/images/Quickpawn_Admin1.png",
+      "/images/Quickpawn_Admin2.png",
+      "/images/Quickpawn_Admin3.png",
+    ],
     previewPath: "/images/quickpawn-admin.png",
     previewAlt: "QuickPawn PMS Admin Portal preview",
   },
@@ -270,7 +299,7 @@ export default function Home() {
 
       <section className="mx-auto max-w-7xl px-3.5 pb-9 pt-5 sm:px-6 sm:pb-12 sm:pt-8 md:pb-14 lg:px-8 lg:pb-20 lg:pt-14">
         <div className="glass-panel relative overflow-hidden rounded-[22px] p-3.5 sm:rounded-[30px] sm:p-6 md:p-8 lg:rounded-[36px] lg:p-12 xl:p-14">
-          <div className="grid items-center gap-7 md:gap-10 lg:grid-cols-[minmax(0,1.12fr)_minmax(320px,0.88fr)] lg:items-stretch">
+          <div className="flex flex-col gap-7 md:gap-10">
             <ScatterWrapper rotation={-2} className="min-w-0">
               <div className="min-w-0">
               <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/25 bg-cyan-400/10 px-3 py-1.5 text-xs text-cyan-100 sm:px-4 sm:py-2 sm:text-sm">
@@ -287,11 +316,11 @@ export default function Home() {
                   <p className="mt-2 text-xs font-semibold uppercase tracking-[0.24em] text-slate-400 sm:mt-3 sm:text-sm sm:tracking-[0.35em]">
                     Aspiring Software Developer
                   </p>
+                  <p className="mt-3 max-w-2xl text-xs leading-6 text-slate-300 sm:text-sm sm:leading-7 md:text-base lg:text-lg">
+                    Computer Science graduate with hands-on software development experience, focused on practical web systems and reliable backend workflows.
+                  </p>
                 </div>
               </div>
-              <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-300 sm:text-base sm:leading-8 md:text-lg lg:text-xl">
-                I build reliable web systems with clean interfaces, practical backend logic, and a strong focus on real users.
-              </p>
 
               <div className="mt-6 grid gap-2.5 min-[480px]:grid-cols-3 sm:mt-8 sm:gap-3">
                 <a
@@ -315,54 +344,52 @@ export default function Home() {
                 </a>
               </div>
 
-              <div className="mt-6 grid gap-2.5 min-[480px]:grid-cols-3 sm:mt-8 sm:gap-3">
-                {[
-                  { value: "2026", label: "CS graduate" },
-                  { value: "8", label: "Featured projects" },
-                  { value: "Full-stack", label: "Web focus" },
-                ].map((stat) => (
-                  <div key={stat.label} className="rounded-2xl border border-slate-800 bg-slate-950/70 p-3 sm:rounded-3xl sm:p-4">
-                    <p className="text-lg font-semibold text-white sm:text-2xl">{stat.value}</p>
-                    <p className="mt-1 text-xs text-slate-400 sm:text-sm">{stat.label}</p>
-                  </div>
-                ))}
-              </div>
               </div>
             </ScatterWrapper>
 
-            <ScatterWrapper rotation={2} delay={0.2} className="relative min-w-0 h-full">
-              <aside className="relative min-w-0 h-full">
-              <div className="glass-panel relative flex h-full flex-col justify-between overflow-hidden rounded-[22px] p-3.5 sm:rounded-[30px] sm:p-5 md:p-6">
-                <div className="flex flex-col gap-3 border-b border-white/5 pb-4 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:pb-5">
-                  <div>
-                    <p className="text-[11px] uppercase tracking-[0.26em] text-slate-400 sm:text-xs sm:tracking-[0.32em]">Profile</p>
-                    <p className="mt-1.5 text-base font-semibold text-white sm:mt-2 sm:text-lg">Aspiring Software Developer / Engineer</p>
-                  </div>
-                  <div className="w-fit rounded-2xl border border-emerald-400/20 bg-emerald-400/10 px-2.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-emerald-200 sm:px-3 sm:py-2 sm:text-xs">
-                    Available
-                  </div>
-                </div>
-
-                <div className="mt-4 grid gap-3 text-xs text-slate-300 min-[520px]:grid-cols-3 sm:mt-6 sm:text-sm lg:grid-cols-1">
-                  {[
-                    ["Location", "Taguig City, Metro Manila"],
-                    ["Email", "jeremiahcurias@gmail.com"],
-                    ["Focus", "Web apps, backend APIs, databases"],
-                  ].map(([label, value]) => (
-                    <div key={label} className="rounded-2xl border border-slate-800 bg-slate-950/60 p-3 sm:rounded-3xl sm:p-4">
-                      <p className="text-slate-400">{label}</p>
-                      <p className="mt-1 break-words text-white">{value}</p>
+            <ScatterWrapper rotation={2} delay={0.2} className="relative min-w-0">
+              <aside aria-label="Education and experience" className="relative min-w-0 border-t border-white/10 pt-4 sm:pt-5">
+                <div className="grid gap-0 divide-y divide-white/10 sm:grid-cols-2 sm:divide-x sm:divide-y-0">
+                  <div className="py-3 sm:pr-5">
+                    <p className="text-center text-base font-semibold text-slate-200 sm:text-lg">Education</p>
+                    <div className="mt-1.5 space-y-2">
+                      <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3">
+                        <div>
+                          <p className="text-sm font-semibold text-white sm:text-base">B.S. Computer Science</p>
+                          <p className="mt-1 text-xs text-slate-400 sm:text-sm">Taguig City University</p>
+                        </div>
+                        <p className="text-xs text-slate-400 sm:shrink-0 sm:text-right sm:text-sm">2022 - 2026</p>
+                      </div>
+                      <div className="flex flex-col gap-1 border-t border-white/10 pt-2.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3">
+                        <div>
+                          <p className="text-sm font-semibold text-white sm:text-base">TechVoc: Computer Programming - SHS</p>
+                          <p className="mt-1 text-xs text-slate-400 sm:text-sm">Western Bicutan National High School</p>
+                        </div>
+                        <p className="text-xs text-slate-400 sm:shrink-0 sm:text-right sm:text-sm">2020 - 2022</p>
+                      </div>
                     </div>
-                  ))}
+                  </div>
+                  <div className="py-3 sm:pl-5">
+                    <p className="text-center text-base font-semibold text-slate-200 sm:text-lg">Work Experience</p>
+                    <div className="mt-1.5 space-y-2">
+                      <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3">
+                        <div>
+                          <p className="text-sm font-semibold text-white sm:text-base">Software Developer</p>
+                          <p className="mt-1 text-xs text-slate-400 sm:text-sm">Inspire Next Global Inc.</p>
+                        </div>
+                        <p className="text-xs text-slate-400 sm:shrink-0 sm:text-right sm:text-sm">Jun 2026 - Sept 2026</p>
+                      </div>
+                      <div className="flex flex-col gap-1 border-t border-white/10 pt-2.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3">
+                        <div>
+                          <p className="text-sm font-semibold text-white sm:text-base">Software Developer Intern</p>
+                          <p className="mt-1 text-xs text-slate-400 sm:text-sm">Inspire Holdings Inc.</p>
+                        </div>
+                        <p className="text-xs text-slate-400 sm:shrink-0 sm:text-right sm:text-sm">Feb 2026 - Jun 2026</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-
-                <div className="mt-4 rounded-2xl border border-cyan-400/15 bg-gradient-to-br from-cyan-400/10 to-violet-500/10 p-3.5 sm:mt-6 sm:rounded-3xl sm:p-5">
-                  <p className="text-xs leading-6 text-slate-200 sm:text-sm sm:leading-7">
-                    Practical, team-oriented, and ready to contribute to software teams that value reliable delivery.
-                  </p>
-                </div>
-              </div>
-            </aside>
+              </aside>
             </ScatterWrapper>
           </div>
         </div>
@@ -490,6 +517,7 @@ export default function Home() {
               tech={project.tech}
               highlights={project.highlights}
               previewSrc={project.previewSrc}
+              previewImages={"previewImages" in project ? project.previewImages : undefined}
               previewPath={project.previewPath}
               previewAlt={project.previewAlt}
               accent={project.accent}
