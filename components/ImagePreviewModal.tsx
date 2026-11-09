@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { createPortal } from "react-dom";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useBodyScrollLock } from "@/hooks/useBodyScrollLock";
 
 type ImagePreviewModalProps = {
   src: string;
@@ -40,6 +41,8 @@ export function ImagePreviewModal({
   const targetRectRef = useRef<DOMRect | null>(null);
   const isClosingRef = useRef(false);
 
+  useBodyScrollLock(isMounted);
+
   const closePreview = useCallback(() => {
     if (isClosingRef.current) {
       return;
@@ -60,7 +63,7 @@ export function ImagePreviewModal({
     ) {
       setIsMounted(false);
       setIsImageReady(false);
-      previewButtonRef.current?.focus();
+      previewButtonRef.current?.focus({ preventScroll: true });
       return;
     }
 
@@ -122,18 +125,15 @@ export function ImagePreviewModal({
       return;
     }
 
-    const previousOverflow = document.body.style.overflow;
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         closePreview();
       }
     };
 
-    document.body.style.overflow = "hidden";
     window.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [closePreview, isMounted]);
@@ -153,7 +153,7 @@ export function ImagePreviewModal({
     if (isClosingRef.current && event.target === event.currentTarget && event.propertyName === "transform") {
       setIsMounted(false);
       setIsImageReady(false);
-      previewButtonRef.current?.focus();
+      previewButtonRef.current?.focus({ preventScroll: true });
     }
   };
 

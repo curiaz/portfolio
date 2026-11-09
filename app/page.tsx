@@ -1,4 +1,5 @@
 import { BackToTop } from "@/components/BackToTop";
+import { AnimatedDisclosure } from "@/components/AnimatedDisclosure";
 import { ContactCard } from "@/components/ContactCard";
 import { ContactForm } from "@/components/ContactForm";
 import { ImagePreviewModal } from "@/components/ImagePreviewModal";
@@ -53,6 +54,7 @@ const experience = [
   {
     role: "Software Developer",
     company: "Inspire Next Global Inc.",
+    logo: "/images/INGI.ico",
     date: "Jun 2026 - Sept 2026",
     description:
       "Contributed to QuickPawn PMS with real-time alerts, QR-code transaction scanning, printable PDF reports, and inventory-expiration notifications, and supported the backend migration to Prisma.",
@@ -66,6 +68,7 @@ const experience = [
   {
     role: "Software Developer Intern",
     company: "Inspire Holdings Inc.",
+    logo: "/images/IHI.ico",
     date: "Feb 2026 - Jun 2026",
     description:
       "Developed product browsing and checkout interfaces, inventory management tools, and drag-and-drop web-builder components with configurable themes.",
@@ -241,6 +244,7 @@ const education = [
   {
     title: "Bachelor of Science in Computer Science",
     school: "Taguig City University",
+    logo: "/images/tcu.webp",
     date: "2022 - 2026",
     detail: "Final CGPA: 1.65",
     previewSrc: "/images/tcu.jpg",
@@ -248,6 +252,7 @@ const education = [
   {
     title: "Senior High School - TechVoc: Computer Programming",
     school: "Western Bicutan National High School",
+    logo: "/images/wbnhslogo.jpg",
     date: "2020 - 2022",
     detail: "Final Grade: 94",
     previewSrc: "/images/wbnhs.png",
@@ -300,27 +305,26 @@ export default function Home() {
 
       <section className="mx-auto max-w-7xl px-3.5 pb-9 pt-5 sm:px-6 sm:pb-12 sm:pt-8 md:pb-14 lg:px-8 lg:pb-20 lg:pt-14">
         <div className="glass-panel relative overflow-hidden rounded-[22px] p-3.5 sm:rounded-[30px] sm:p-6 md:p-8 lg:rounded-[36px] lg:p-12 xl:p-14">
-          <div className="flex flex-col gap-7 md:gap-10">
-            <ScatterWrapper rotation={-2} className="min-w-0">
-              <div className="min-w-0">
+          <ScatterWrapper rotation={-2} className="min-w-0">
+            <div className="min-w-0">
               <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/25 bg-cyan-400/10 px-3 py-1.5 text-xs text-cyan-100 sm:px-4 sm:py-2 sm:text-sm">
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_0_5px_rgba(16,185,129,0.12)] sm:h-2 sm:w-2" />
                 Open to opportunities
               </div>
 
-              <div className="mt-4 flex items-center gap-4 sm:gap-5 md:gap-7 lg:gap-8">
+              <div className="mt-4 grid grid-cols-[auto_minmax(0,1fr)] items-center gap-x-4 gap-y-3 sm:gap-x-5 md:gap-x-7 lg:gap-x-8">
                 <ProfileImageModal src="/images/curias.jpg" alt="Portrait of Jeremiah James A. Curias" />
                 <div className="min-w-0">
-                  <h1 className="max-w-4xl text-[1.75rem] font-semibold leading-tight tracking-tight text-white text-balance min-[390px]:text-4xl md:text-5xl lg:text-[3.35rem] xl:text-6xl">
+                  <h1 className="max-w-4xl text-xl font-semibold leading-tight tracking-tight text-white text-balance min-[375px]:text-[1.375rem] md:text-5xl lg:text-[3.35rem] xl:text-6xl">
                     Jeremiah James A. Curias
                   </h1>
-                  <p className="mt-2 text-xs font-semibold uppercase tracking-[0.24em] text-slate-400 sm:mt-3 sm:text-sm sm:tracking-[0.35em]">
+                  <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-400 min-[375px]:text-[11px] min-[375px]:tracking-[0.2em] sm:mt-3 sm:text-sm sm:tracking-[0.35em]">
                     Aspiring Software Developer
                   </p>
-                  <p className="mt-3 max-w-2xl text-xs leading-6 text-slate-300 sm:text-sm sm:leading-7 md:text-base lg:text-lg">
-                    Computer Science graduate with hands-on software development experience, focused on practical web systems and reliable backend workflows.
-                  </p>
                 </div>
+                <p className="col-span-2 max-w-2xl text-xs leading-6 text-slate-300 sm:text-sm sm:leading-7 md:text-base lg:col-start-2 lg:col-span-1 lg:text-lg">
+                  Computer Science graduate with hands-on software development experience, focused on practical web systems and reliable backend workflows.
+                </p>
               </div>
 
               <div className="mt-6 grid gap-2.5 min-[480px]:grid-cols-3 sm:mt-8 sm:gap-3">
@@ -344,56 +348,116 @@ export default function Home() {
                   Download CV
                 </a>
               </div>
+            </div>
+          </ScatterWrapper>
+        </div>
 
-              </div>
-            </ScatterWrapper>
-
-            <ScatterWrapper rotation={2} delay={0.2} className="relative min-w-0">
-              <aside aria-label="Education and experience" className="relative min-w-0 border-t border-white/10 pt-4 sm:pt-5">
-                <div className="grid gap-0 divide-y divide-white/10 sm:grid-cols-2 sm:divide-x sm:divide-y-0">
-                  <div className="py-3 sm:pr-5">
-                    <p className="text-center text-base font-semibold text-slate-200 sm:text-lg">Education</p>
-                    <div className="mt-1.5 space-y-2">
-                      <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3">
-                        <div>
-                          <p className="text-sm font-semibold text-white sm:text-base">B.S. Computer Science</p>
-                          <p className="mt-1 text-xs text-slate-400 sm:text-sm">Taguig City University</p>
-                        </div>
-                        <p className="text-xs text-slate-400 sm:shrink-0 sm:text-right sm:text-sm">2022 - 2026</p>
-                      </div>
-                      <div className="flex flex-col gap-1 border-t border-white/10 pt-2.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3">
-                        <div>
-                          <p className="text-sm font-semibold text-white sm:text-base">TechVoc: Computer Programming - SHS</p>
-                          <p className="mt-1 text-xs text-slate-400 sm:text-sm">Western Bicutan National High School</p>
-                        </div>
-                        <p className="text-xs text-slate-400 sm:shrink-0 sm:text-right sm:text-sm">2020 - 2022</p>
+        <ScatterWrapper rotation={2} delay={0.2} className="relative mt-4 min-w-0 sm:mt-6">
+          <aside aria-label="Education and experience" className="glass-panel relative min-w-0 rounded-[22px] p-3.5 sm:rounded-[30px] sm:p-6 md:p-8">
+            <div className="sm:hidden">
+              <AnimatedDisclosure title="Education">
+                <div className="space-y-3 pb-2 pt-1">
+                  <div className="flex items-baseline justify-between gap-2">
+                    <div className="min-w-0">
+                      <p className="text-xs font-semibold text-white">B.S. Computer Science</p>
+                      <div className="mt-1 flex items-center gap-1.5">
+                        <Image src="/images/tcu.webp" alt="" width={14} height={14} className="h-3.5 w-3.5 shrink-0 object-contain" />
+                        <p className="text-[11px] text-slate-400">Taguig City University</p>
                       </div>
                     </div>
+                    <p className="shrink-0 text-right text-[10px] text-slate-400">2022 - 2026</p>
                   </div>
-                  <div className="py-3 sm:pl-5">
-                    <p className="text-center text-base font-semibold text-slate-200 sm:text-lg">Work Experience</p>
-                    <div className="mt-1.5 space-y-2">
-                      <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3">
-                        <div>
-                          <p className="text-sm font-semibold text-white sm:text-base">Software Developer</p>
-                          <p className="mt-1 text-xs text-slate-400 sm:text-sm">Inspire Next Global Inc.</p>
-                        </div>
-                        <p className="text-xs text-slate-400 sm:shrink-0 sm:text-right sm:text-sm">Jun 2026 - Sept 2026</p>
-                      </div>
-                      <div className="flex flex-col gap-1 border-t border-white/10 pt-2.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3">
-                        <div>
-                          <p className="text-sm font-semibold text-white sm:text-base">Software Developer Intern</p>
-                          <p className="mt-1 text-xs text-slate-400 sm:text-sm">Inspire Holdings Inc.</p>
-                        </div>
-                        <p className="text-xs text-slate-400 sm:shrink-0 sm:text-right sm:text-sm">Feb 2026 - Jun 2026</p>
+                  <div className="flex items-baseline justify-between gap-2 border-t border-white/10 pt-2.5">
+                    <div className="min-w-0">
+                      <p className="text-xs font-semibold text-white">TechVoc: Computer Programming - SHS</p>
+                      <div className="mt-1 flex items-center gap-1.5">
+                        <Image src="/images/wbnhslogo.jpg" alt="" width={14} height={14} className="h-3.5 w-3.5 shrink-0 object-contain" />
+                        <p className="text-[11px] text-slate-400">Western Bicutan National High School</p>
                       </div>
                     </div>
+                    <p className="shrink-0 text-right text-[10px] text-slate-400">2020 - 2022</p>
                   </div>
                 </div>
-              </aside>
-            </ScatterWrapper>
-          </div>
-        </div>
+              </AnimatedDisclosure>
+              <AnimatedDisclosure title="Work Experience">
+                <div className="space-y-3 pb-2 pt-1">
+                  <div className="flex items-baseline justify-between gap-2">
+                    <div className="min-w-0">
+                      <p className="text-xs font-semibold text-white">Software Developer</p>
+                      <div className="mt-1 flex items-center gap-1.5">
+                        <Image src="/images/INGI.ico" alt="" width={16} height={16} unoptimized className="h-4 w-4 shrink-0 object-contain" />
+                        <p className="text-[11px] text-slate-400">Inspire Next Global Inc.</p>
+                      </div>
+                    </div>
+                    <p className="shrink-0 text-right text-[10px] text-slate-400">Jun 2026 - Sept 2026</p>
+                  </div>
+                  <div className="flex items-baseline justify-between gap-2 border-t border-white/10 pt-2.5">
+                    <div className="min-w-0">
+                      <p className="text-xs font-semibold text-white">Software Developer Intern</p>
+                      <div className="mt-1 flex items-center gap-1.5">
+                        <Image src="/images/IHI.ico" alt="" width={16} height={16} unoptimized className="h-4 w-4 shrink-0 object-contain" />
+                        <p className="text-[11px] text-slate-400">Inspire Holdings Inc.</p>
+                      </div>
+                    </div>
+                    <p className="shrink-0 text-right text-[10px] text-slate-400">Feb 2026 - Jun 2026</p>
+                  </div>
+                </div>
+              </AnimatedDisclosure>
+            </div>
+            <div className="hidden gap-0 divide-y divide-white/10 sm:grid sm:grid-cols-2 sm:divide-x sm:divide-y-0">
+              <div className="py-3 sm:pr-5">
+                <p className="text-center text-base font-semibold text-slate-200 sm:text-lg">Education</p>
+                <div className="mt-1.5 space-y-2">
+                  <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3">
+                    <div>
+                      <p className="text-sm font-semibold text-white sm:text-base">B.S. Computer Science</p>
+                      <div className="mt-1 flex items-center gap-2">
+                        <Image src="/images/tcu.webp" alt="" width={20} height={20} className="h-5 w-5 shrink-0 object-contain" />
+                        <p className="text-xs text-slate-400 sm:text-sm">Taguig City University</p>
+                      </div>
+                    </div>
+                    <p className="text-xs text-slate-400 sm:shrink-0 sm:text-right sm:text-sm">2022 - 2026</p>
+                  </div>
+                  <div className="flex flex-col gap-1 border-t border-white/10 pt-2.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3">
+                    <div>
+                      <p className="text-sm font-semibold text-white sm:text-base">TechVoc: Computer Programming - SHS</p>
+                      <div className="mt-1 flex items-center gap-2">
+                        <Image src="/images/wbnhslogo.jpg" alt="" width={20} height={20} className="h-5 w-5 shrink-0 object-contain" />
+                        <p className="text-xs text-slate-400 sm:text-sm">Western Bicutan National High School</p>
+                      </div>
+                    </div>
+                    <p className="text-xs text-slate-400 sm:shrink-0 sm:text-right sm:text-sm">2020 - 2022</p>
+                  </div>
+                </div>
+              </div>
+              <div className="py-3 sm:pl-5">
+                <p className="text-center text-base font-semibold text-slate-200 sm:text-lg">Work Experience</p>
+                <div className="mt-1.5 space-y-2">
+                  <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3">
+                    <div>
+                      <p className="text-sm font-semibold text-white sm:text-base">Software Developer</p>
+                      <div className="mt-1 flex items-center gap-2">
+                        <Image src="/images/INGI.ico" alt="" width={20} height={20} unoptimized className="h-5 w-5 shrink-0 object-contain" />
+                        <p className="text-xs text-slate-400 sm:text-sm">Inspire Next Global Inc.</p>
+                      </div>
+                    </div>
+                    <p className="text-xs text-slate-400 sm:shrink-0 sm:text-right sm:text-sm">Jun 2026 - Sept 2026</p>
+                  </div>
+                  <div className="flex flex-col gap-1 border-t border-white/10 pt-2.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3">
+                    <div>
+                      <p className="text-sm font-semibold text-white sm:text-base">Software Developer Intern</p>
+                      <div className="mt-1 flex items-center gap-2">
+                        <Image src="/images/IHI.ico" alt="" width={20} height={20} unoptimized className="h-5 w-5 shrink-0 object-contain" />
+                        <p className="text-xs text-slate-400 sm:text-sm">Inspire Holdings Inc.</p>
+                      </div>
+                    </div>
+                    <p className="text-xs text-slate-400 sm:shrink-0 sm:text-right sm:text-sm">Feb 2026 - Jun 2026</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </ScatterWrapper>
       </section>
 
       <section id="about" className={sectionClass}>
@@ -476,19 +540,25 @@ export default function Home() {
           {experience.map((item, index) => (
             <ScatterWrapper key={`${item.role}-${item.company}`} rotation={index % 2 === 0 ? -2 : 2}>
               <article
-                className={`${cardClass} relative grid gap-5 lg:grid-cols-[minmax(0,220px)_minmax(0,1fr)] lg:p-8 ${item.featured ? "shadow-[0_18px_60px_rgba(34,211,238,0.08)]" : ""}`}
+                className={`${cardClass} relative grid gap-5 lg:grid-cols-[minmax(0,240px)_minmax(0,1fr)] xl:grid-cols-[minmax(0,260px)_minmax(0,1fr)] lg:p-8 ${item.featured ? "shadow-[0_18px_60px_rgba(34,211,238,0.08)]" : ""}`}
               >
               <div className="lg:pr-6">
-                <p className="text-[11px] uppercase tracking-[0.22em] text-cyan-300/80 sm:text-sm sm:tracking-[0.28em]">{item.date}</p>
-                <h3 className="mt-2 text-lg font-semibold text-white sm:mt-3 sm:text-2xl">{item.role}</h3>
-                <p className="mt-1.5 text-xs text-slate-400 sm:mt-2 sm:text-sm">{item.company}</p>
+                <div className="flex items-start justify-between gap-3">
+                  <h3 className="text-lg font-semibold leading-snug text-white sm:text-2xl">{item.role}</h3>
+                  <p className="shrink-0 pt-1 text-right text-[10px] leading-4 text-cyan-300/80 sm:text-xs lg:hidden">{item.date}</p>
+                </div>
+                <div className="mt-1.5 flex items-center gap-2 sm:mt-2">
+                  <Image src={item.logo} alt="" width={24} height={24} unoptimized className="h-6 w-6 shrink-0 object-contain" />
+                  <p className="text-xs text-slate-400 sm:text-sm">{item.company}</p>
+                </div>
               </div>
               <div className="border-t border-slate-800 pt-4 lg:border-l lg:border-t-0 lg:pl-6 lg:pt-0">
-                <p className="text-xs leading-6 text-slate-300 sm:text-sm sm:leading-7 md:leading-8 lg:text-base">{item.description}</p>
-                <ul className="mt-4 space-y-2 border-l border-slate-800 pl-3 sm:mt-5 sm:space-y-3 sm:pl-4">
-                  {item.highlights.map((highlight) => (
-                    <li key={highlight} className="text-xs leading-6 text-slate-300 sm:text-sm sm:leading-7">
-                      <span>{highlight}</span>
+                <p className="mb-3 hidden text-right text-xs leading-4 text-cyan-300/80 lg:block">{item.date}</p>
+                <ul className="space-y-2 sm:space-y-3">
+                  {[item.description, ...item.highlights].map((detail) => (
+                    <li key={detail} className="flex gap-2.5 text-xs leading-6 text-slate-300 sm:gap-3 sm:text-sm sm:leading-7 md:leading-8 lg:text-base">
+                      <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-300" />
+                      <span>{detail}</span>
                     </li>
                   ))}
                 </ul>
@@ -508,7 +578,7 @@ export default function Home() {
           />
         </ScatterWrapper>
 
-        <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-5 xl:grid-cols-3">
           {featuredProjects.map((project, index) => (
             <ScatterWrapper key={project.title} rotation={index % 2 === 0 ? -3 : 3} delay={(index % 3) * 0.1}>
               <ProjectCard
@@ -537,7 +607,7 @@ export default function Home() {
           />
         </ScatterWrapper>
 
-        <div className="mt-8 grid gap-5 md:grid-cols-2">
+        <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-5">
           {education.map((item, index) => (
             <ScatterWrapper key={item.title} rotation={index % 2 === 0 ? -4 : 4} delay={index * 0.1}>
               <article className={`${cardClass} flex flex-col h-full`}>
@@ -557,10 +627,13 @@ export default function Home() {
                 </div>
               )}
               <div className="flex flex-col grow">
-                <p className="text-[11px] uppercase tracking-[0.24em] text-cyan-300/80 sm:text-xs sm:tracking-[0.28em]">{item.date}</p>
-                <h3 className="mt-2 text-lg font-semibold text-white sm:mt-3 sm:text-2xl">{item.title}</h3>
-                <p className="mt-1.5 text-xs text-slate-400 sm:mt-2 sm:text-sm">{item.school}</p>
-                <p className="mt-4 text-xs leading-6 text-slate-300 sm:mt-auto sm:pt-4 sm:text-sm sm:leading-7">{item.detail}</p>
+                <p className="text-[9px] uppercase tracking-[0.12em] text-cyan-300/80 sm:text-xs sm:tracking-[0.28em]">{item.date}</p>
+                <h3 className="mt-1 text-sm font-semibold leading-snug text-white sm:mt-3 sm:text-2xl">{item.title}</h3>
+                <div className="mt-1 flex items-center gap-1.5 sm:mt-2 sm:gap-2">
+                  <Image src={item.logo} alt="" width={20} height={20} className="h-4 w-4 shrink-0 object-contain sm:h-5 sm:w-5" />
+                  <p className="min-w-0 text-[10px] leading-4 text-slate-400 sm:text-sm sm:leading-normal">{item.school}</p>
+                </div>
+                <p className="mt-auto pt-3 text-[10px] leading-4 text-slate-300 sm:pt-4 sm:text-sm sm:leading-7">{item.detail}</p>
               </div>
               </article>
             </ScatterWrapper>
