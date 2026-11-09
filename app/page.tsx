@@ -1,6 +1,7 @@
 import { BackToTop } from "@/components/BackToTop";
 import { ContactCard } from "@/components/ContactCard";
 import { ContactForm } from "@/components/ContactForm";
+import { ImagePreviewModal } from "@/components/ImagePreviewModal";
 import { Navbar } from "@/components/Navbar";
 import { ProfileImageModal } from "@/components/ProfileImageModal";
 import { ProjectCard } from "@/components/ProjectCard";
@@ -543,12 +544,14 @@ export default function Home() {
               {item.previewSrc && (
                 <div className="mb-4 overflow-hidden rounded-[16px] border border-white/10 sm:mb-5 sm:rounded-[20px]">
                   <div className="relative aspect-[16/9]">
-                    <Image
+                    <ImagePreviewModal
                       src={item.previewSrc}
                       alt={`${item.school} preview`}
-                      fill
-                      className="object-cover transition duration-500 hover:scale-[1.02]"
-                      sizes="(min-width: 768px) 50vw, 100vw"
+                      label={`${item.school} education`}
+                      previewClassName="absolute inset-0 h-full w-full"
+                      previewImageClassName="object-cover"
+                      previewSizes="(min-width: 768px) 50vw, 100vw"
+                      modalAspectClassName="aspect-[16/9]"
                     />
                   </div>
                 </div>
