@@ -307,8 +307,8 @@ export default function Home() {
                   Contact Me
                 </a>
                 <a
-                  href="/Curias_CV.pdf"
-                  download
+                  href="/Jeremiah%20James%20Curias%20-%20CV.pdf"
+                  download="Jeremiah James Curias - CV.pdf"
                   className="w-full inline-flex items-center justify-center rounded-full border border-violet-400/30 bg-violet-500/10 px-5 py-2.5 text-xs font-semibold text-violet-100 transition hover:-translate-y-0.5 hover:border-violet-300/50 hover:bg-violet-500/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-300/60 sm:px-6 sm:py-3 sm:text-sm"
                 >
                   Download CV
